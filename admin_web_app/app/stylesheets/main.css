@@ -1,0 +1,157 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,cyrillic");
+html,
+body {
+  position: relative;
+  min-height: 100%;
+  height: 100%;
+}
+html {
+  position: relative;
+  overflow-x: hidden;
+  padding: 0;
+  min-height: 100%;
+  font-size: 80%;
+}
+body {
+  font-family: 'RobotoDraft', 'Roboto', 'Helvetica Neue, Helvetica, Arial', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 2rem;
+  letter-spacing: 0.01rem;
+  color: #212121;
+  background-color: #f5f5f5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font_size: 50%;
+  font-weight: 300;
+}
+td {
+  font-size: 1.3em;
+  font-weight: 400;
+}
+th {
+  font-size: 1.6em;
+  font-weight: 600;
+}
+nav .brand-logo {
+  padding: 0 0 0 1em;
+}
+@media screen and (max-width: 992px) {
+  nav .brand-logo {
+    padding: 0;
+    left: 20%;
+  }
+}
+.input-field input[type=search] ~ .mdi-navigation-close {
+  color: rgba(255,255,255,0.7);
+}
+.padding {
+  padding: 1em;
+}
+.font-x2 {
+  font-size: 2em;
+}
+.back {
+  position: absolute;
+  left: 10px;
+  top: 20px;
+  bottom: 0;
+}
+.btn i,
+.btn-large i,
+.btn-floating i,
+.btn-flat i {
+  font-size: 2rem;
+}
+.margin {
+  margin: 0.5em;
+}
+.row {
+  margin-bottom: 10px;
+}
+.btn {
+  font-weight: 700;
+  background-color: #ff5252;
+}
+.btn:hover {
+  background-color: #ff5252;
+}
+.switch label input[type=checkbox]:checked + .lever {
+  background-color: #9fa8da;
+}
+.switch label input[type=checkbox]:checked + .lever:after {
+  background-color: #5c6bc0;
+}
+[type="checkbox"]:checked + label {
+  padding-left: 35px;
+}
+[type="checkbox"]:checked + label:before {
+  border-right: 2px solid #3949ab !important;
+  border-bottom: 2px solid #3949ab !important;
+}
+[type="radio"].with-gap:checked + label:after {
+  background-color: #3949ab;
+}
+[type="radio"].with-gap:checked + label:before {
+  border: 2px solid #3949ab;
+}
+.dropdown-content {
+  z-index: 2;
+}
+.dropdown-content li > a,
+.dropdown-content li > span {
+  color: #303f9f;
+}
+.waves-effect {
+  vertical-align: top;
+}
+/* label color */
+.input-field label {
+  color: #303f9f;
+}
+/* label focus color */
+.input-field input[type=text]:focus + label {
+  color: #303f9f;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #303f9f;
+  box-shadow: 0 1px 0 0 #303f9f;
+}
+/* valid color */
+.input-field input[type=text].valid {
+  border-bottom: 1px solid #303f9f;
+  box-shadow: 0 1px 0 0 #303f9f;
+}
+/* invalid color */
+.input-field input[type=text].invalid {
+  border-bottom: 1px solid #303f9f;
+  box-shadow: 0 1px 0 0 #303f9f;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: #303f9f;
+}
+.menu.card.small {
+  height: auto;
+}
+.drop-box {
+  border: 2px dashed #ddd;
+  width: 100%;
+  height: 150px;
+  text-align: center;
+  padding-top: 25px;
+}
+.dragover {
+  border: 2px dashed #00f;
+}
+.dragoverfail {
+  border: 2px dashed #f00;
+}

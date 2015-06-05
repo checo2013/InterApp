@@ -1,0 +1,16 @@
+<md-toolbar class="md-theme-indigo">
+  <h1 class="md-toolbar-tools" md-ink-ripple>Recetas WalMart</h1>
+</md-toolbar>
+
+<md-content flex role="navigation">
+  <md-subheader class="md-no-sticky">Menu</md-subheader>
+  <md-list-item  ng-repeat="item in menuItems" ng-click="ir(item.link)">
+        <div class="inset">
+           <ng-md-icon icon="{{item.icon}}"></ng-md-icon>
+        </div>
+        <div class="inset">
+          {{item.title}}
+        </div>
+  </md-list-item>
+  <md-divider></md-divider>
+</md-content>

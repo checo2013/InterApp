@@ -1,0 +1,19 @@
+{
+  "name": "dashboard-app",
+  "version": "0.0.1",
+  "authors": [
+    "Sergio Alcala <checo_2k2@hotmail.com>"
+  ],
+  "description": "librerias necesarias para la app",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "*",
+    "materialize": "*",
+    "angular-ui-router": "*",
+    "svg-morpheus": "*",
+    "angular-messages": "*",
+    "angular-sweetalert": "*",
+    "material-date-picker": "~1.1.5",
+    "ng-file-upload": "~5.0.0"
+  }
+}

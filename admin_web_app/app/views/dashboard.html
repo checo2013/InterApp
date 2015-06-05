@@ -1,0 +1,23 @@
+
+<nav>
+  <div class="nav-wrapper indigo darken-1" ng-hide="buscar">
+    <a href="" class="brand-logo">{{titulo}}</a>
+    <ul class="right">
+      <li><a href="" class="waves-effect waves-light" ng-click="buscar = true"><i class="mdi-action-search"></i></a></li>
+      <li><a href="" class="waves-effect waves-light"><i class="mdi-navigation-refresh"></i></a></li>
+      <li><a href="" class="waves-effect waves-light"><i class="mdi-navigation-more-vert"></i></a></li>
+    </ul>
+  </div>
+  <div class="nav-wrapper indigo darken-1" ng-show="buscar">
+    <form>
+      <div class="input-field">
+        <input id="search" type="search" required placeholder="Busqueda general">
+        <label for="search"><i class="mdi-action-search"></i></label>
+        <i class="mdi-navigation-close" ng-click="buscar = false"></i>
+      </div>
+    </form>
+  </div>
+</nav>
+
+<div ui-view></div>
+
