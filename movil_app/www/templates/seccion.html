@@ -1,0 +1,18 @@
+<ion-view ng-init="inicio()" view-title="{{ otro.name }}">
+
+    <ion-content>
+        <div class="hero" ng-style="{'background-image': 'url(' + otro.image + ')'}">
+            <div class="content">
+                <h3><a class="light">{{ otro.name }}</a></h3>
+            </div>
+        </div>
+
+        <div ng-repeat="item in otro.seccions" class="card" ng-click="ir(item.template_to)">
+            <div class="item item-text-wrap text-item seccion"> 
+                {{ item.name }}
+            </div>
+        </div>
+
+    </ion-content>
+    
+</ion-view>

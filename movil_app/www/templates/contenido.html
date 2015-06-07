@@ -1,0 +1,16 @@
+<ion-view view-title="{{ template.name }}">
+
+    <ion-content>
+        <div class="hero" ng-style="{'background-image': 'url(' + template.image + ')'}">
+            <div class="content">
+                <h3><a class="light">{{ template.name }}</a></h3>
+            </div>
+        </div>
+        <div class="card">
+            <div class="item item-text-wrap text-left"> 
+                <ng-bind-html="{{ template.contenido }}">
+            </div>
+        </div>
+    </ion-content>
+    
+</ion-view>

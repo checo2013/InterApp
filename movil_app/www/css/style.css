@@ -1,0 +1,151 @@
+body{
+	/*background:rgb(80, 156, 206);*/
+}
+
+/* Empty. Add your own CSS if you like */
+
+.shadow-z-1 {
+  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+  -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+}
+
+.card .item{
+	padding: 1.5em;
+}
+
+.avatar{
+	background-color: #3F51B5 !important;
+}
+
+.menu h2{
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: 10px;
+  left: 16px;
+  color: white;
+}
+
+.app-icon{
+	margin-top: 2em;
+}
+
+.bar {
+	z-index: 10;
+}
+
+.bar.bar-header .button+.title{
+	text-align: center;
+}
+
+.content h1{
+	color: white;
+}
+
+.light{
+	font-weight: 300;
+}
+
+.list .item.item-bg-image.x2{
+	min-height: 250px;
+	max-height: 250px;
+}
+
+.list .item.item-bg-image h2{
+	bottom: 10px;
+	position: absolute;
+	font-weight: 400;
+	font-size: 22px;
+}
+
+.list .item.item-bg-image>img{
+	opacity: 0.90;
+}
+
+.login{
+
+	background-color: white;
+	margin: 2em 1.5em;
+}
+
+.login .im-wrapper, .padding{
+	padding: 0em 1em 3em 1em !important;
+}
+
+.text-white{
+	color:white !important;	
+}
+
+.sinlink{
+	text-decoration: none !important;
+	color:white !important;	
+}
+
+.azul{
+	/*background: #F1F5F8;*/
+	/*0D47A1 gris*/
+	background: #519DCE;
+	/*background:rgb(80, 156, 206);*/
+}
+
+
+.hero>.content {
+	background-color: rgba(65, 65, 65, 0.63);
+}
+
+.margin-left{
+	margin-left: 10px;
+}
+
+.padding-leftright{
+	padding: 0 16px !important;
+}
+
+.preguntas{
+	padding: 5px !important;
+}
+
+.resultados a.item{
+	padding-bottom: 0;
+}
+
+.text-item{
+	font-size: 20px;
+	text-align: center;
+}
+
+.text-title{
+	text-align: center;
+	color: #444;
+	padding: 16px !important;
+	border-width: 1px;
+	font-size: 22px !important;
+}
+
+.text-right{
+	text-align: right;
+}
+
+.text-left{
+ 	text-align: left;
+}
+
+.text-center{
+	text-align: center;
+}
+
+.text-justify{
+	text-align: justify;
+}
+
+.white{
+	color: #FFF !important;
+}
+
+#video{
+	width: 100%;
+}
+
+
+

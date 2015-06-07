@@ -1,0 +1,46 @@
+<ion-view view-title="login" class="azul" align-title="center" ng-init="inicio()">
+    <ion-content>
+    <br><br>
+        <div class="text-center no-header flat">
+            <div class="content">
+                <div class="app-icon">
+                    <img src="img/logo.png" alt="interapp" width="100">
+                </div>
+            </div>
+        </div>
+        <form ng-submit="login()">
+            <div class="list padding login shadow-z-1">
+
+                <label class="item item-input item-floating-label"> 
+                    <span class="input-label">Usuario</span> 
+                    <input type="text" ng-model="datos.username" placeholder="Usuario" required> 
+                </label> 
+                <label class="item item-input item-floating-label"> 
+                    <span class="input-label">Contraseña</span> 
+                    <input type="password" ng-model="datos.password" placeholder="Contraseña" required> 
+                </label> 
+            
+            </div>
+            <div class="padding-leftright">
+                <button type="submit" class="button button-raised button-full button-assertive ink">Iniciar Sesión</button>
+            </div>
+            <div class="padding">
+                <div class="item item-checkbox text-white"> 
+                    <label class="checkbox"> 
+                        <input type="checkbox" ng-model="datos.recordar"> 
+                    </label> Recordar inicio de sesión
+                </div> 
+                <div class="item item-checkbox text-white"> 
+                    <label class="checkbox"> 
+                        <input type="checkbox" ng-model="datos.aceptar"> 
+                    </label> 
+                    <a class="sinlink" href="">
+                        Acepto terminos y condiciones
+                    </a>
+                        
+                </div> 
+            </div>
+        </form>
+    </ion-content>
+</ion-view>
+

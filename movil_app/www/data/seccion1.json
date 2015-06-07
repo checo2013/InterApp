@@ -1,0 +1,44 @@
+{
+   "name": "Gastos Medicos Mayores",
+   "content": "",
+   "description": "Seccion de prueba",
+   "image": "img/menus/interapp/1/1.jpg",
+   "category_id": "5",
+   "seccions": [{
+      "id": "1",
+      "name": "Emergencias",
+      "image": "",
+      "status": "1",
+      "template_to": "3",
+      "template_id": "2",
+      "created_at": "2015-06-06 19:24:39",
+      "updated_at": "2015-06-06 19:24:39"
+   }, {
+      "id": "2",
+      "name": "Mi Poliza",
+      "image": "",
+      "status": "1",
+      "template_to": "3",
+      "template_id": "2",
+      "created_at": "2015-06-06 19:24:39",
+      "updated_at": "2015-06-06 19:24:39"
+   }, {
+      "id": "3",
+      "name": "Consulta M\u00e9dica,Telefonica\/Domicilio",
+      "image": "",
+      "status": "1",
+      "template_to": "3",
+      "template_id": "2",
+      "created_at": "2015-06-06 19:24:39",
+      "updated_at": "2015-06-06 19:24:39"
+   }, {
+      "id": "4",
+      "name": "Preguntas Frecuentes",
+      "image": "",
+      "status": "1",
+      "template_to": "3",
+      "template_id": "2",
+      "created_at": "2015-06-06 19:24:39",
+      "updated_at": "2015-06-06 19:24:39"
+   }]
+}

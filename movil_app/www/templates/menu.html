@@ -1,0 +1,19 @@
+<ion-view view-title="{{ tamplate.name }}" ng-init="inicio()">
+
+    <ion-content>
+        <div class="content">
+
+            <div class="list condensed-space no-padding">
+
+                <div class="card dark-bg" ng-repeat="item in tamplate.menus">
+                    <a class="item clear-bg item-bg-image" ng-click="ir(item.template_to)" >
+                        <h2>{{ item.name }}</h2>
+                        <img ng-src="{{ item.image }}">
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </ion-content>
+    
+</ion-view>
