@@ -13,7 +13,8 @@ angular.module('starter', [
   'ionic.service.deploy',
   'ionic-material',
   'starter.controllers',
-  'app.services'
+  'app.services',
+  'ngSanitize'
 ])
 
 .config(['$ionicAppProvider', function($ionicAppProvider) {
@@ -128,28 +129,37 @@ angular.module('starter', [
   $stateProvider.state('app.menu', {
       url: '/menu/:id',
       templateUrl: 'templates/menu.html',
-      // resolve: {
-      //     // A function value resolves to the return
-      //     // value of the function
-      //     template: function(templateService,$stateParams){
-      //         var templateid = $stateParams.id;
-      //         templateService.get('menu',templateid).success(function (data){
-      //           return data;
-      //         });
-      //     }
-      // },
+      resolve: {
+          // para cargar datos antes de cargar el controller
+          datosTemplate: function(templateService,$stateParams){
+              return templateService.get(1,$stateParams.id);
+          }
+      },
       controller: 'MenuCtrl'
   });
 
   $stateProvider.state('app.seccion', {
       url: '/seccion/:id',
       templateUrl: 'templates/seccion.html',
+      resolve: {
+          // para cargar datos antes de cargar el controller
+          datosTemplate: function(templateService,$stateParams){
+              return templateService.get(5,$stateParams.id);
+          }
+      },
       controller: 'SeccionCtrl'
   });
   
   $stateProvider.state('app.contenido', {
       url: '/contenido/:id',
-      templateUrl: 'templates/contenido.html'
+      templateUrl: 'templates/contenido.html',
+      resolve: {
+          // para cargar datos antes de cargar el controller
+          datosTemplate: function(templateService,$stateParams){
+              return templateService.get(2,$stateParams.id);
+          }
+      },
+      controller: 'ContenidoCtrl'
   });
 
   $stateProvider.state('app.consulta', {
@@ -162,10 +172,6 @@ angular.module('starter', [
       url: '/resultados/:id',
       templateUrl: 'templates/resultados.html'
   });
-
-
-
-
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');

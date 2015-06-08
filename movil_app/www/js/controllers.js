@@ -24,14 +24,11 @@ angular.module('starter.controllers', ['app.services'])
 })
 
 
-.controller('MenuCtrl', function($scope,$stateParams,templateService) {
+.controller('MenuCtrl', function($scope,$stateParams,datosTemplate,templateService) {
+
+    $scope.tamplate = datosTemplate.data;
 
     $scope.inicio = function(){
-      
-      templateService.get('menu',$stateParams.id).success(function (data){
-        console.log(data);
-        $scope.tamplate = data;
-      });
 
     }
 
@@ -41,45 +38,35 @@ angular.module('starter.controllers', ['app.services'])
 })
 
 
-.controller('SeccionCtrl', function($scope,$stateParams,templateService) {
+.controller('SeccionCtrl', function($scope,$stateParams,templateService,datosTemplate) {
 
+    $scope.otro = datosTemplate.data;
     $scope.inicio = function(){
-      console.log($stateParams.id);
 
-      templateService.get('seccion',$stateParams.id).success(function (data){
-
-        console.log(data);
-        $scope.otro = data;
-
-      });
+      // templateService.get(5,$stateParams.id).success(function (data){
+      //   console.log(data);
+      //   $scope.otro = data;
+      // });
 
     }
 
     $scope.ir = function(id){
-      console.log(id);
       templateService.set(id);
     }
 })
 
 
-.controller('ContenidoCtrl', function($scope,$stateParams,templateService) {
+.controller('ContenidoCtrl', function($scope,$stateParams,templateService,datosTemplate) {
 
+    $scope.contenido = datosTemplate.data;
     $scope.inicio = function(){
-      console.log($stateParams.id);
-
-      templateService.get('seccion',$stateParams.id).success(function (data){
-
-        console.log(data);
-        $scope.otro = data;
-
-      });
+      // templateService.get(2,$stateParams.id).success(function (data){
+      //   console.log(data);
+      //   $scope.contenido = data;
+      // });
 
     }
 
-    $scope.ir = function(id){
-      console.log(id);
-      templateService.set(id);
-    }
 })
 
 .controller('GastosCtrl', function($scope,$ionicSideMenuDelegate) {

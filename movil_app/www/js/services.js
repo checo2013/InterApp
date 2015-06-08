@@ -9,16 +9,24 @@ function sesion($rootScope, $http, $q, url, $ionicLoading, $ionicPopup, $state, 
 
             $http.post(url + 'login',credenciales).success(function (data){
 
+
                 if (credenciales.recordar) {
                     storage.set('username',data.username);
                 };
 
-                var categoria = 'menu';
-                var id = 1;
+                $rootScope.username = data.username;
 
-                $state.go('app.' + categoria,{id: 1});
+                // // esta aplicacion simpre sera la 1
+                $http.get(url + 'movil/app/1').success(function (data){
 
-                $ionicLoading.hide();
+                    var categoria = data.name;
+                    var template_id = data.id;
+
+                    $state.go('app.' + categoria,{id:template_id});
+                    $ionicLoading.hide();
+
+                });
+
 
             }).error(function (data){
 
@@ -59,15 +67,22 @@ function loading($ionicLoading){
 }
 
 
-function templateService($http,$state){
+function templateService($http,$state,url){
     return{
         get:function(categoria,id){
 
-            return $http.get('data/' + categoria + '1.json');
+            return $http.get(url + 'movil/template/' + id + '/' + categoria);
         },
         set:function(id){
-            var categoria = 'seccion';
-            $state.go('app.' + categoria,{id: 1});
+
+            $http.get(url + 'movil/template/'+id).success(function (data){
+                console.log(data);
+                var categoria = data.name;
+                var template_id = data.id;
+
+                $state.go('app.' + categoria,{id:template_id});
+
+            });
         }
     }
 }
@@ -117,11 +132,12 @@ sesion.$inject = ['$rootScope', '$http', '$q', 'url','$ionicLoading','$ionicPopu
 loading.$inject = ['$ionicLoading'];
 mensajes.$inject = ['$ionicPopup'];
 storage.$inject = ['$window'];
-templateService.$inject = ['$http','$state'];
+templateService.$inject = ['$http','$state','url'];
 
 
 angular.module('app.services', ['ngResource'])
-.constant('url', 'http://daseda.net/api/')
+// .constant('url', 'http://daseda.net/api/')
+.constant('url', 'http://localhost/interapp/public/api/')
 .factory("sesion",sesion)
 .factory("loading",loading)
 .factory("mensajes",mensajes)
