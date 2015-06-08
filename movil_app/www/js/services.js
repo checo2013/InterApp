@@ -136,8 +136,8 @@ templateService.$inject = ['$http','$state','url'];
 
 
 angular.module('app.services', ['ngResource'])
-// .constant('url', 'http://daseda.net/api/')
-.constant('url', 'http://localhost/interapp/public/api/')
+.constant('url', 'http://iterapp.daseda.net/api/')
+// .constant('url', 'http://localhost/interapp/public/api/')
 .factory("sesion",sesion)
 .factory("loading",loading)
 .factory("mensajes",mensajes)
