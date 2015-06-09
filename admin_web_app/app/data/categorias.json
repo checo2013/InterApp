@@ -1,0 +1,22 @@
+[
+	{
+		"id":1,
+		"name":"menu"
+	},
+	{
+		"id":2,
+		"name":"secciones"
+	},
+	{
+		"id":3,
+		"name":"contenido"
+	},
+	{
+		"id":4,
+		"name":"consultas"
+	},
+	{
+		"id":5,
+		"name":"resultados"
+	}
+]

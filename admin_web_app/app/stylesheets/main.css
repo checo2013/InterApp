@@ -52,6 +52,9 @@ nav .brand-logo {
 .input-field input[type=search] ~ .mdi-navigation-close {
   color: rgba(255,255,255,0.7);
 }
+.menu .card.small .card-image {
+  height: auto;
+}
 .padding {
   padding: 1em;
 }
@@ -154,4 +157,13 @@ nav .brand-logo {
 }
 .dragoverfail {
   border: 2px dashed #f00;
+}
+.tabs .tab a {
+  color: #fff;
+}
+.tabs .tab a:hover {
+  color: #ccc;
+}
+.tabs .indicator {
+  background-color: #f00;
 }
