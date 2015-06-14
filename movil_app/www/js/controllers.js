@@ -5,8 +5,8 @@ angular.module('starter.controllers', ['app.services'])
   $scope.inicio = function(){
     // inicializa los datos del formulario
     $scope.datos = {
-      username:'',
-      password:'',
+      email:'eag10@live.com.mx',
+      password:'60003734',
       aceptar:false,
       recordar:false
     }
@@ -41,12 +41,8 @@ angular.module('starter.controllers', ['app.services'])
 .controller('SeccionCtrl', function($scope,$stateParams,templateService,datosTemplate) {
 
     $scope.otro = datosTemplate.data;
-    $scope.inicio = function(){
 
-      // templateService.get(5,$stateParams.id).success(function (data){
-      //   console.log(data);
-      //   $scope.otro = data;
-      // });
+    $scope.inicio = function(){
 
     }
 
@@ -60,11 +56,21 @@ angular.module('starter.controllers', ['app.services'])
 
     $scope.contenido = datosTemplate.data;
     $scope.inicio = function(){
-      // templateService.get(2,$stateParams.id).success(function (data){
-      //   console.log(data);
-      //   $scope.contenido = data;
-      // });
 
+    }
+
+})
+
+.controller('PolizaCtrl', function($scope,$stateParams,templateService,datosTemplate) {
+
+    $scope.poliza = datosTemplate.data;
+    $scope.inicio = function(){
+
+    }
+
+    $scope.llamar = function () {
+        var call = "tel:01-800-911-9999";
+        document.location.href = call;
     }
 
 })

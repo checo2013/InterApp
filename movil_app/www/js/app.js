@@ -71,34 +71,11 @@ angular.module('starter', [
     $ionicSideMenuDelegate.toggleLeft();
   };
 
-  // $rootScope.$on('$stateChangeStart', function(event, toState){ 
+  $rootScope.$on('$stateChangeStart', function(event, toState){ 
 
-  //     if (toState.name == 'app.gmm' && $rootScope.accesogmm) {
-  //       event.preventDefault();
-  //       $state.go('app.gmm2');
-  //     };
+      // console.log(toState);
 
-  //     if (toState.name == 'app.noautomovil' && $rootScope.accesoaut) {
-  //       event.preventDefault();
-  //       $state.go('app.automovil');
-  //     };
-
-  //     if (toState.name == 'app.vidano' && $rootScope.accesovid) {
-  //       event.preventDefault();
-  //       $state.go('app.vida');
-  //     };
-
-  //     if (toState.name == 'app.casano' && $rootScope.accesocas) {
-  //       event.preventDefault();
-  //       $state.go('app.casa');
-  //     }; 
-
-  // })
-
-  // $rootScope.accesogmm = true;
-  // $rootScope.accesoaut = true;
-  // $rootScope.accesovid = true;
-  // $rootScope.accesocas = true;
+  })
 
 
 })
@@ -120,11 +97,6 @@ angular.module('starter', [
       abstract: true,
       templateUrl: 'templates/app.html'
   });
-
-  // $stateProvider.state('app.home', {
-  //     url: '/home',
-  //     templateUrl: 'templates/home.html'
-  // });
 
   $stateProvider.state('app.menu', {
       url: '/menu/:id',
@@ -162,6 +134,18 @@ angular.module('starter', [
       controller: 'ContenidoCtrl'
   });
 
+  $stateProvider.state('app.poliza', {
+      url: '/poliza/:id',
+      templateUrl: 'templates/poliza.html',
+      resolve: {
+          // para cargar datos antes de cargar el controller
+          datosTemplate: function(templateService,$stateParams){
+              return templateService.get(6,$stateParams.id);
+          }
+      },
+      controller: 'PolizaCtrl'
+  });
+
   $stateProvider.state('app.consulta', {
       url: '/consulta/:id',
       templateUrl: 'templates/consulta.html'
@@ -173,7 +157,39 @@ angular.module('starter', [
       templateUrl: 'templates/resultados.html'
   });
 
+  $stateProvider.state('app.digital', {
+      url: '/digital',
+      templateUrl: 'templates/digital.html'
+  });
+
+  $stateProvider.state('app.nogmm', {
+      url: '/nogmm',
+      templateUrl: 'templates/nogmm.html'
+  });
+
+  $stateProvider.state('app.noautomovil', {
+      url: '/noautomovil',
+      templateUrl: 'templates/noautomovil.html'
+  });
+
+  $stateProvider.state('app.nocasa', {
+      url: '/nocasa',
+      templateUrl: 'templates/nocasa.html'
+  });
+
+  $stateProvider.state('app.novida', {
+      url: '/novida',
+      templateUrl: 'templates/novida.html'
+  });
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
 
-});
+})
+
+
+.filter('confiable', ['$sce', function($sce){
+    return function(text) {
+        return $sce.trustAsHtml(text);
+    };
+}])

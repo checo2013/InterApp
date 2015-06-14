@@ -7,14 +7,41 @@ function sesion($rootScope, $http, $q, url, $ionicLoading, $ionicPopup, $state, 
                 template: '<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'
             });
 
-            $http.post(url + 'login',credenciales).success(function (data){
-
+            $http.post(url + 'movil/login',credenciales).success(function (data){
 
                 if (credenciales.recordar) {
-                    storage.set('username',data.username);
+                    storage.set('username',data.completo);
                 };
 
-                $rootScope.username = data.username;
+                storage.set('user',data.id);
+
+                storage.set('GMM',false);
+                storage.set('AUTO',false);
+                storage.set('VIDA',false);
+                storage.set('CASA',false);
+
+
+                angular.forEach(data.polizas,function (poliza){
+          
+                    if (poliza.name == 'GMM'){
+                        storage.set('GMM',true);
+                    } 
+
+                    if(poliza.name == 'AUTO'){
+                        storage.set('AUTO',true);
+                    } 
+
+                    if(poliza.name == 'VIDA'){
+                        storage.set('VIDA',true);
+                    } 
+
+                    if(poliza.name == 'CASA'){
+                        storage.set('CASA',true);
+                    }
+
+                });
+
+                $rootScope.completo = data.completo;
 
                 // // esta aplicacion simpre sera la 1
                 $http.get(url + 'movil/app/1').success(function (data){
@@ -67,11 +94,45 @@ function loading($ionicLoading){
 }
 
 
-function templateService($http,$state,url){
+function templateService($http,$state,url,$q,verificaPermisos,storage){
     return{
         get:function(categoria,id){
 
-            return $http.get(url + 'movil/template/' + id + '/' + categoria);
+            var promesa = $q.defer();
+
+            var info = $http.get(url + 'movil/template/' + id + '/' + categoria + '/' + storage.get('user'));
+
+            $q.when(info).then(function (data){
+
+                console.log(categoria);
+
+                if (categoria == 5) {
+
+                    var seccion = data.data.name;
+                    // console.log(seccion);
+
+                    if (seccion == 'Gastos médicos mayores' || seccion == 'Automovil' || seccion == 'Vida' || seccion == 'Casa Habitacion') {
+                        
+                        console.log('Si es una seccion a validar');
+                        if(verificaPermisos.seccion(seccion)){
+
+                            promesa.resolve(data);  
+
+                        };
+                        
+                    }else{
+
+                        promesa.resolve(data);
+
+                    }
+
+
+                }else{
+                    promesa.resolve(data);
+                }
+            });
+
+            return promesa.promise;
         },
         set:function(id){
 
@@ -127,22 +188,61 @@ function storage($window){
 }
 
 
+function verificaPermisos(storage,$q,$state){
+    return{
+        seccion:function(sitio){
+
+            if (sitio == 'Gastos médicos mayores' && storage.get('GMM') == 'true'){
+                console.log('si hay GMM');
+                return true;
+            }else if(sitio == 'Automovil' && storage.get('AUTO') == 'true'){
+                console.log('si hay AUTO');
+                return true;
+            }else if(sitio == 'Vida' && storage.get('VIDA') == 'true'){
+                console.log('si hay VIDA');
+                return true;
+            }else if(sitio == 'Casa Habitacion' && storage.get('CASA') == 'true'){
+                console.log('si hay CASA');
+                return true;
+            }else{
+
+                if (sitio == 'Gastos médicos mayores'){
+                    $state.go('app.nogmm');
+                }else if(sitio == 'Automovil'){
+                    $state.go('app,noautomovil');
+                }else if(sitio == 'Vida'){
+                    $state.go('app.novida');
+                }else if(sitio == 'Casa Habitacion'){
+                    $state.go('app.nocasa');
+                }
+
+            }
+
+        }
+    }
+}
+
 
 sesion.$inject = ['$rootScope', '$http', '$q', 'url','$ionicLoading','$ionicPopup','$state','storage'];
 loading.$inject = ['$ionicLoading'];
 mensajes.$inject = ['$ionicPopup'];
 storage.$inject = ['$window'];
-templateService.$inject = ['$http','$state','url'];
-
+templateService.$inject = ['$http','$state','url','$q','verificaPermisos','storage'];
+verificaPermisos.$inject = ['storage','$q','$state'];
 
 angular.module('app.services', ['ngResource'])
-.constant('url', 'http://iterapp.daseda.net/api/')
-// .constant('url', 'http://localhost/interapp/public/api/')
+// .constant('url', 'http://iterapp.daseda.net/api/')
+.constant('url', 'http://localhost/interapp/public/api/')
 .factory("sesion",sesion)
 .factory("loading",loading)
 .factory("mensajes",mensajes)
 .factory("storage",storage)
 .factory("templateService",templateService)
+.factory("verificaPermisos",verificaPermisos)
+
+
+
+
 
 
 

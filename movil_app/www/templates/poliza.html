@@ -1,0 +1,25 @@
+<ion-view view-title="interApp">
+
+    <ion-content>
+        <div class="hero" ng-style="{'background-image': 'url(' + poliza.image + ')'}">
+            <div class="content">
+                <h3><a class="light">{{ poliza.name }}</a></h3>
+            </div>
+        </div>
+        <div class="card" ng-repeat="item in poliza.polizas">
+          <div class="item item-text-wrap text-item"> 
+            Tu póliza es la <br> 
+            {{ item.numero }}
+          </div>
+          <div class="item item-text-wrap text-item"> 
+            Vigente hasta el: <br>
+            {{ item.vencimiento |date:'dd/MM/yyyy'}}
+          </div>
+          <div class="item item-text-wrap text-item"> 
+            Telefono de atencion: <br>
+            <a href="" ng-click="llamar(item.telefono)">{{ item.telefono }}</a>
+          </div>
+        </div>
+    </ion-content>
+    
+</ion-view>

@@ -94,7 +94,7 @@ body{
 .azul{
 	/*background: #F1F5F8;*/
 	/*0D47A1 gris*/
-	background: #519DCE;
+	background: #519DCE !important;
 	/*background:rgb(80, 156, 206);*/
 }
 
