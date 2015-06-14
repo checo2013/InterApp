@@ -6,9 +6,11 @@
 	angular.module('app', [
 		'ui.router',
 		'app.controllers',
+		'app.services',
 		'ngMessages',
-		'ui.materialize',
-		'ngFileUpload'
+		'ngSanitize',
+		'ngMeditor',
+		'ui.materialize'
 	]);
 
 	function config($stateProvider, $urlRouterProvider) {
@@ -29,15 +31,14 @@
 		.state('index.create', {
 			url: 'app',
 			templateUrl: "views/app.html",
+			resolve:{
+				categorias:function(consulta){
+					return consulta.categorias(1);
+				}
+			},
 			controller: "createCtrl",
 			controllerAs: "app"
 		});
-		// .state('index.app', {
-		// 	url: 'app/:id',
-		// 	templateUrl: "views/app.html",
-		// 	controller: "appCtrl",
-		// 	controllerAs: "app"
-		// });
 	  
 	};
 

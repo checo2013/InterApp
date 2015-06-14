@@ -4,149 +4,315 @@
   <div class="row">
     <div class="col s12 m12 indigo darken-1 white-text z-depth-1">
       <h3>{{app.titulo}}</h3>
+      <ul class="tabs indigo darken-1 white-text" tabs>
+        <li class="tab col s3"><a href="#test1">General</a></li>
+        <li class="tab col s3"><a href="#test2">Vistas</a></li>
+        <li class="tab col s3"><a href="#test3">Usuarios</a></li>
+      </ul>
     </div>
   </div>
 
-     
-  <div class="row">
+  <div id="test1" class="col s12">
+      <div class="row">
 
-    <div class="col s12 m12 l6">
-      <div class="z-depth-1 white padding">
-        
-        <h3>Información</h3>
-        <div class="divider"></div>
-        <br>
-        <div class="row">
-          <div class="input-field col s12 m4">
-            <input id="name" type="text" ng-model="app.datos.nombre" class="validate">
-            <label for="name">Nombre</label> 
-          </div>
-          <div class="input-field col s12 m8">
-            <input id="description" type="text" ng-model="app.datos.descripcion" class="validate">
-            <label for="description">Descripción</label> 
-          </div>
-        </div>
-
-        <div class="row">
-
-          <div class="col s6 m4 center-align">
-            <div class="switch">
-              Aplicación Activa?<br>
-              <label>
-                No
-                <input type="checkbox" ng-model="app.datos.status">
-                <span class="lever"></span>
-                Si
-              </label>
+        <div class="col s12 m12 l6">
+          <div class="z-depth-1 white padding">
+            
+            <h3>Información</h3>
+            <div class="divider"></div>
+            <br>
+            <div class="row">
+              <div class="input-field col s12 m4">
+                <input id="name" type="text" ng-model="app.datos.nombre" class="validate">
+                <label for="name">Nombre</label> 
+              </div>
+              <div class="input-field col s12 m8">
+                <input id="description" type="text" ng-model="app.datos.descripcion" class="validate">
+                <label for="description">Descripción</label> 
+              </div>
             </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="col s12 m12 l6">
-        <br>
-        <div ngf-drop ng-model="files" class="drop-box" 
-            ngf-drag-over-class="dragover" 
-            ngf-multiple="false" 
-            ngf-allow-dir="true"
-            ngf-accept="'image/*'"
-            ngf-change="upload($files)"
-            ngf-hide-on-drop-not-available="false" 
-            ngf-min-size='10' 
-            ngf-max-size='10500000'>
-
-            Sube o arrastra la imagen de tu aplicación
-            <br>
-            <button class="waves-effect waves-light btn"
-            ngf-select ng-model="files" 
-            ngf-multiple="false"
-            ngf-change="upload($files)"
-            ngf-min-size='10' 
-            ngf-max-size='10500000'
-            >Seleccionar Imagen</button>
-            <br>
-            <div class="text-center animate-show padding" ng-show="cargandoA">
-            <p>Cargando {{ archivo }}</p>
-            <progressbar class="progress-striped active" max="100" value="100"></progressbar>
-            </div>
-            <br>
-            <div class="alert padding" ng-class="tipoAlerta" role="alert">{{mensaje}}</div>
-
-        </div>
-
-    </div>
-    
-  </div>
-
-
-  <div class="row" ng-hide="app.modifica">
-    
-    <div class="col s12 m12">
-
-      <div class="z-depth-1 white padding">
-        
-        <h3>Vistas Disponibles</h3>
-        <div class="divider"></div>
-        <table class="bordered responsive-table">
-          <thead>
-            <tr>
-                <th data-field="Nombre">Nombre</th>
-                <th data-field="Categoria">Categoria</th>
-                <th data-field="Principal">Principal</th>
-                <th data-field="Status">Status</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr ng-repeat="template in app.templates">
-              <td>{{template.nombre}}</td>
-              <td>{{template.categoria}}</td>
-              <td class="center-align"><i ng-class="{ 'yellow-text': template.principal }" class="mdi-action-stars font-x2"></i></td>
-              <td class="center-align">
-                <i ng-if="template.status" class="mdi-navigation-check green-text font-x2"></i>
-                <i ng-if="!template.status" class="mdi-navigation-close red-text font-x2"></i>
-              </td>
-              <td class="center-align">
-                <a class="tooltipped waves-effect waves-black btn-flat font-x2" data-position="top" data-delay="50" data-tooltip="Editar" ng-click="app.editarTemplate($index)"><i class="mdi-editor-mode-edit"></i></a>
-
-                <a class="tooltipped waves-effect waves-black btn-flat font-x2" data-position="top" data-delay="50" data-tooltip="Agregar Items" ng-click="app.addInfo($index)"><i class="mdi-action-view-list"></i></a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <br>
-        <br>
-      </div>
-
-    </div>
-    
-  </div>
-
-  <div class="row" ng-show="app.modifica">
-
-    <div class="col s12 m12">
-
-      <div class="z-depth-1 white padding">
-
-        <div class="right"><a class="waves-effect waves-indigo btn-flat indigo-text" ng-click="app.modifica = !app.modifica"><i class="mdi-navigation-close"></i></a></div>
-        <h3>{{ app.tituloMuestra }}</h3>
-        <div class="divider"></div>
-        <br>
-        <div ng-if=" app.muestra == 'menu' ">
 
             <div class="row">
-                <div class="col s12 m12 l5">
-                  <div class="input-field col s12 m12">
-                    <input id="name" type="text" ng-model="app.nombreMenu" class="validate">
-                    <label for="name">Nombre</label> 
-                  </div>
-                  <div class="input-field col s12 m12">
-                    <input id="description" type="text" ng-model="app.descripcionMenu" class="validate">
-                    <label for="description">Descripción</label> 
-                  </div>
-                  <div class="col s12 m12">
+
+              <div class="col s6 m4 center-align">
+                <div class="switch">
+                  Aplicación Activa?<br>
+                  <label>
+                    No
+                    <input type="checkbox" ng-model="app.datos.status">
+                    <span class="lever"></span>
+                    Si
+                  </label>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m12 l6">
+            <br>
+            <div ngf-drop ng-model="files" class="drop-box" 
+                ngf-drag-over-class="dragover" 
+                ngf-multiple="false" 
+                ngf-allow-dir="true"
+                ngf-accept="'image/*'"
+                ngf-change="app.imagenApp($files)"
+                ngf-hide-on-drop-not-available="false" 
+                ngf-min-size='10' 
+                ngf-max-size='10500000'>
+
+                Sube o arrastra la imagen de tu aplicación
+                <br>
+                <button class="waves-effect waves-light btn"
+                ngf-select ng-model="files" 
+                ngf-multiple="false"
+                ngf-change="app.imagenApp($files)"
+                ngf-min-size='10' 
+                ngf-max-size='10500000'
+                >Seleccionar Imagen</button>
+                <br>
+                <div class="text-center animate-show padding" ng-show="cargandoA">
+                <p>Cargando {{ archivo }}</p>
+                <progressbar class="progress-striped active" max="100" value="100"></progressbar>
+                </div>
+                <br>
+                <div class="alert padding" ng-class="tipoAlerta" role="alert">{{mensaje}}</div>
+
+            </div>
+
+        </div>
+        
+      </div>
+  </div>
+  <div id="test2" class="col s12">
+      <div class="row" ng-hide="app.modifica">
+        
+        <div class="col s12 m12">
+
+          <div class="z-depth-1 white padding">
+            <a class='dropdown-button btn-flat right' href='' data-activates='dropdown1'><i class="mdi-navigation-more-vert"></i></a>
+            <!-- Dropdown Stucture -->
+            <ul id='dropdown1' class='dropdown-content'>
+              <li><a href="" ng-click="app.nuevoTemplate()" >Agregar Vista</a></li>
+            </ul>
+
+            <h3>Vistas Disponibles</h3>
+            <div class="divider"></div>
+            <table class="bordered responsive-table">
+              <thead>
+                <tr>
+                    <th data-field="Nombre">Nombre</th>
+                    <th data-field="Categoria">Categoria</th>
+                    <th data-field="Principal">Principal</th>
+                    <th data-field="Status">Status</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr ng-repeat="template in app.templates">
+                  <td>{{template.nombre}}</td>
+                  <td>{{template.categoria}}</td>
+                  <td class="center-align"><i ng-class="{ 'yellow-text': template.principal }" class="mdi-action-stars font-x2"></i></td>
+                  <td class="center-align">
+                    <i ng-if="template.status" class="mdi-navigation-check green-text font-x2"></i>
+                    <i ng-if="!template.status" class="mdi-navigation-close red-text font-x2"></i>
+                  </td>
+                  <td class="center-align">
+                    <a class="tooltipped waves-effect waves-black btn-flat font-x2" data-position="top" data-delay="50" data-tooltip="Editar" ng-click="app.editarTemplate($index)"><i class="mdi-editor-mode-edit"></i></a>
+
+                    <a class="tooltipped waves-effect waves-black btn-flat font-x2" data-position="top" data-delay="50" data-tooltip="Agregar Items" ng-click="app.addInfo($index)"><i class="mdi-action-settings"></i></a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <br>
+          </div>
+
+        </div>
+        
+      </div>
+
+      <div class="row" ng-show="app.modifica">
+
+        <div class="col s12 m12">
+
+          <div class="z-depth-1 white padding">
+
+            <div class="right"><a class="waves-effect waves-indigo btn-flat indigo-text" ng-click="app.modifica = !app.modifica"><i class="mdi-navigation-close"></i></a></div>
+            <h3>{{ app.tituloMuestra }}</h3>
+            <div class="divider"></div>
+            <br>
+            <div ng-if=" app.muestra == 'menu' ">
+
+                <div class="row">
+                    <div class="col s12 m12 l5">
+                      <div class="input-field col s12 m12">
+                        <input id="name" type="text" ng-model="app.nombreMenu" class="validate">
+                        <label for="name">Nombre</label> 
+                      </div>
+                      <div class="input-field col s12 m12">
+                        <input id="description" type="text" ng-model="app.descripcionMenu" class="validate">
+                        <label for="description">Descripción</label> 
+                      </div>
+                      <div class="col s12 m12">
+                        <div ng-show="app.sinimg">
+                          <div ngf-drop ng-model="files" class="drop-box" 
+                              ngf-drag-over-class="dragover" 
+                              ngf-multiple="false" 
+                              ngf-allow-dir="true"
+                              ngf-accept="'image/*'"
+                              ngf-change="app.imagenMenu($files)"
+                              ngf-hide-on-drop-not-available="false" 
+                              ngf-min-size='10' 
+                              ngf-max-size='10500000'>
+
+                              Arrastra tu imagen aqui
+                              <br>
+                              <button class="waves-effect waves-light btn"
+                              ngf-select ng-model="files" 
+                              ngf-multiple="false"
+                              ngf-change="app.imagenMenu($files)"
+                              ngf-min-size='10' 
+                              ngf-max-size='10500000'
+                              >Seleccionar Imagen</button>
+                              <br>
+                              <div class="text-center animate-show padding" ng-show="cargandoA">
+                              <p>Cargando {{ archivo }}</p>
+                              <progressbar class="progress-striped active" max="100" value="100"></progressbar>
+                              </div>
+                              <br>
+                              <div class="alert padding" ng-class="tipoAlerta" role="alert">{{mensaje}}</div>
+                          </div>
+                        </div>
+                        <div ng-hide="app.sinimg">
+                          <div class="menu card small">
+                              <div class="card-image">
+                                <img src="img/1.jpg">
+                              </div>
+                              <div class="card-action">
+                                <a href="" class="waves-effect waves-dark btn white black-text">Cambiar</a>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+
+                      <div class="col s12 m6">
+                        <select class="" ng-model="app.templateMen" material-select>
+                            <option value="">Vista destino</option>
+                            <option ng-repeat="vista in app.templates">{{vista.nombre}}</option>
+                        </select>
+                      </div>
+
+                      <div class="input-field col s12 m6 center-align">
+                          <button class="waves-effect waves-light indigo btn" ng-click="app.addMenu()">Agregar</button>
+                          <button class="waves-effect waves-light red btn" ng-click="app.modifica = !app.modifica">Terminar</button>
+                      </div>
+
+
+                    </div>
+                    <div class="col s12 m12 l7">
+
+                          <div class="menu card small" ng-repeat="item in app.itemsMenu">
+                            <div class="card-image">
+                              <img ng-src="img/1.jpg">
+                              <span class="card-title">{{ item.nombre }}</span>
+                            </div>
+                            <div class="card-action right-align">
+                                <a href="" ng-click="app.removeMenu($index)" class="waves-effect waves-dark btn red white-text">Quitar</a>
+                              </div>
+                          </div> 
+
+                    </div>
+                </div>
+
+            </div>
+            <div ng-if=" app.muestra == 'seccion' ">
+
+                <div class="row">
+                    <div class="col s12 m12 l5">
+                      <div class="col s12 m12">
+                        <div ngf-drop ng-model="files" class="drop-box" 
+                            ngf-drag-over-class="dragover" 
+                            ngf-multiple="false" 
+                            ngf-allow-dir="true"
+                            ngf-accept="'image/*'"
+                            ngf-change="upload($files)"
+                            ngf-hide-on-drop-not-available="false" 
+                            ngf-min-size='10' 
+                            ngf-max-size='10500000'>
+
+                            Arrastra tu imagen principal de sección
+                            <br>
+                            <button class="waves-effect waves-light btn"
+                            ngf-select ng-model="files" 
+                            ngf-multiple="false"
+                            ngf-change="upload($files)"
+                            ngf-min-size='10' 
+                            ngf-max-size='10500000'
+                            >Seleccionar Imagen</button>
+                            <br>
+                            <div class="text-center animate-show padding" ng-show="cargandoA">
+                            <p>Cargando {{ archivo }}</p>
+                            <progressbar class="progress-striped active" max="100" value="100"></progressbar>
+                            </div>
+                            <br>
+                            <div class="alert padding" ng-class="tipoAlerta" role="alert">{{mensaje}}</div>
+
+                        </div>
+                      </div>
+                      <h4>Informacion de cada seccion</h4>
+                      <div class="divider"></div>
+
+                      <div class="input-field col s12 m12">
+                        <input id="name" type="text" ng-model="app.nombreSeccion" class="validate">
+                        <label for="name">Nombre</label> 
+                      </div>
+
+                      <div class="input-field col s12 m12">
+                        <input id="description" type="text" ng-model="app.descripcionSeccion" class="validate">
+                        <label for="description">Descripción</label> 
+                      </div>
+
+                      <div class="input-field col s12 m6">
+                        <select class="" ng-model="app.templateSeccion" material-select>
+                          <option value="">Vista destino</option>
+                          <option ng-repeat="vista in app.templates" value="1">{{vista.nombre}}</option>
+                        </select>
+                      </div>
+
+                      <div class="input-field col s12 m6 center-align">
+                          <button class="waves-effect waves-light indigo btn">Agregar</button>
+                      </div>
+
+                    </div>
+                    <div class="col s12 m12 l7">
+                          
+                          <div class="menu card small">
+                            <div class="card-image">
+                              <img ng-src="img/1.jpg">
+                              <span class="card-title">{{seccion.nombre}}</span>
+                            </div>
+                          </div> 
+                          <div class="card-panel white center-align" ng-repeat="item in seccion.items">
+                            <span class="black-text ">
+                              {{item.name}}
+                            </span>
+                          </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div ng-if=" app.muestra == 'contenido' ">
+
+                <div class="row">
+                  <div class="col s12 m12 l6">
+                    
+
+
                     <div ngf-drop ng-model="files" class="drop-box" 
                         ngf-drag-over-class="dragover" 
                         ngf-multiple="false" 
@@ -157,7 +323,7 @@
                         ngf-min-size='10' 
                         ngf-max-size='10500000'>
 
-                        Arrastra tu imagen aqui
+                        Arrastra tu imagen principal de contenido
                         <br>
                         <button class="waves-effect waves-light btn"
                         ngf-select ng-model="files" 
@@ -175,120 +341,45 @@
                         <div class="alert padding" ng-class="tipoAlerta" role="alert">{{mensaje}}</div>
 
                     </div>
-                  </div>
 
-                  <div class="input-field col s12 m6">
-                    <select ng-model="app.templateMenu" material-select>
-                      <option value="">Vista destino</option>
-                      <option ng-repeat="vista in app.templates" value="1">{{vista.nombre}}</option>
-                    </select>
-                    <!-- <select class="" ng-model="app.templateMenu" ng-options="c.nombre for c in app.templates">
-                    </select> -->
-                  </div>
-
-                  <div class="input-field col s12 m6 center-align">
-                      <button class="waves-effect waves-light indigo btn">Agregar</button>
-                  </div>
-
-
-                </div>
-                <div class="col s12 m12 l7">
-
-                      <div class="menu card small" ng-repeat="item in items">
-                        <div class="card-image">
-                          <img ng-src="{{item.image}}">
-                          <span class="card-title">{{ item.name }}</span>
-                        </div>
-                      </div> 
-
-                </div>
-            </div>
-            <div class="col s12 m12 l6">
-              
-            </div>
-
-        </div>
-        <div ng-if=" app.muestra == 'seccion' ">
-
-            <div class="row">
-                <div class="col s12 m12 l5">
-                  <div class="col s12 m12">
-                    <div ngf-drop ng-model="files" class="drop-box" 
-                        ngf-drag-over-class="dragover" 
-                        ngf-multiple="false" 
-                        ngf-allow-dir="true"
-                        ngf-accept="'image/*'"
-                        ngf-change="upload($files)"
-                        ngf-hide-on-drop-not-available="false" 
-                        ngf-min-size='10' 
-                        ngf-max-size='10500000'>
-
-                        Arrastra tu imagen principal de sección
-                        <br>
-                        <button class="waves-effect waves-light btn"
-                        ngf-select ng-model="files" 
-                        ngf-multiple="false"
-                        ngf-change="upload($files)"
-                        ngf-min-size='10' 
-                        ngf-max-size='10500000'
-                        >Seleccionar Imagen</button>
-                        <br>
-                        <div class="text-center animate-show padding" ng-show="cargandoA">
-                        <p>Cargando {{ archivo }}</p>
-                        <progressbar class="progress-striped active" max="100" value="100"></progressbar>
-                        </div>
-                        <br>
-                        <div class="alert padding" ng-class="tipoAlerta" role="alert">{{mensaje}}</div>
-
+                    <h4>Informacion del contenido</h4>
+                    <div class="divider"></div>
+                    
+                    <div class="input-field col s12 m12">
+                      <input id="name" type="text" ng-model="app.nombreSeccion" class="validate">
+                      <label for="name">Nombre</label> 
                     </div>
-                  </div>
-                  <h4>Informacion de cada seccion</h4>
-                  <div class="divider"></div>
 
-                  <div class="input-field col s12 m12">
-                    <input id="name" type="text" ng-model="app.nombreMenu" class="validate">
-                    <label for="name">Nombre</label> 
-                  </div>
+                    <div class="input-field col s12 m12">
+                      <input id="description" type="text" ng-model="app.descripcionSeccion" class="validate">
+                      <label for="description">Descripción</label> 
+                    </div>
 
-                  <div class="input-field col s12 m12">
-                    <input id="description" type="text" ng-model="app.descripcionMenu" class="validate">
-                    <label for="description">Descripción</label> 
                   </div>
 
-                  <div class="input-field col s12 m6">
-                    <select class="" ng-model="app.templateMenu" material-select>
-                      <option value="">Vista destino</option>
-                      <option ng-repeat="vista in app.templates" value="1">{{vista.nombre}}</option>
-                    </select>
-                  </div>
+                  <div class="col s12 m12 l6">
+                        
+                        <ng-meditor class="ng-meditor" ng-model="content" placeholder="placeholder"></ng-meditor>
 
+                  </div>
                   <div class="input-field col s12 m6 center-align">
-                      <button class="waves-effect waves-light indigo btn">Agregar</button>
+                      <button class="waves-effect waves-light indigo btn">Guardar</button>
                   </div>
-
                 </div>
-                <div class="col s12 m12 l7">
 
-                      <div class="menu card small" ng-repeat="item in items">
-                        <div class="card-image">
-                          <img ng-src="{{item.image}}">
-                          <span class="card-title">{{ item.name }}</span>
-                        </div>
-                      </div> 
-
-                </div>
             </div>
-            <div class="col s12 m12 l6">
-              
-            </div>
+        
+          </div>
 
         </div>
-    
+      
       </div>
-
-    </div>
-  
   </div>
+
+  <div id="test3" class="col s12">
+    
+  </div>
+
 
 </div>
 
@@ -303,6 +394,7 @@
         <input id="template_name" type="text" ng-model="app.nombre" class="validate">
         <label for="template_name">Nombre del template</label> 
       </div>
+
       <div class="input-field col s12 m8">
         <input id="template_description" type="text" ng-model="app.descripcion" class="validate">
         <label for="template_description">Descripción</label> 
@@ -357,7 +449,7 @@
 </div>
 
 <!-- boton flotante -->
-<div class="fixed-action-btn" style="bottom: 24px; right: 24px;">
+<!-- <div class="fixed-action-btn" style="bottom: 24px; right: 24px;">
   <a class="btn-floating btn-large red waves-effect waves-light">
     <i class="large mdi-editor-mode-edit"></i>
   </a>
@@ -365,6 +457,10 @@
     <li><a class="tooltipped btn-floating red darken-4 waves-effect waves-light  modal-trigger" ng-click="app.nuevoTemplate()"  data-position="left" data-delay="50" data-tooltip="Agregar Vista"><i class="large mdi-editor-insert-drive-file"></i></a></li>
     <li><a class="tooltipped btn-floating indigo waves-effect waves-light"  data-position="left" data-delay="50" data-tooltip="Guardar Cambios"><i class="large mdi-content-save"></i></a></li>
   </ul>
+</div> -->
+
+<div class="fixed-action-btn" style="bottom: 24px; right: 24px;">
+  <a class="tooltipped btn-floating btn-large waves-effect waves-light red"  data-position="top" data-delay="50" data-tooltip="Guardar Cambios" ng-click="app.guardaAplicacion()"><i class="mdi-content-save"></i></a>
 </div>
 
 <br>
@@ -375,7 +471,18 @@
 <script>
   $('.tooltipped').tooltip({delay: 50});
   $('.modal-trigger').leanModal();
-  $('select').material_select();
+  // $('select').material_select();
+  $('ul.tabs').tabs();
+  $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: false, // Does not change width of dropdown to that of the activator
+      hover: true, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin: false // Displays dropdown below the button
+    }
+  );
+  $('.materialboxed').materialbox();
 </script>
 
 

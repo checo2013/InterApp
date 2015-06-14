@@ -2,47 +2,58 @@
 (function () {  
 
 	'use strict';
-	angular.module('app.controllers', []);
+	angular.module('app.controllers', ['app.services','ngFileUpload']);
 
 	function homeCtrl($rootScope) {
 		var home = this;
 		$rootScope.titulo = 'Bienvenido';
 
-		this.elimina = function(id){
+		home.nuevaReceta = function(id){
 			alert('Vas a eliminar el onbjeto: ' + id);
 		}
 	};
 
 
-	function createCtrl($rootScope) {
+	function createCtrl($rootScope,aplicacion,categorias,Upload) {
 		
 		var app = this;
 		var indice;
 		$rootScope.titulo = '';
+		
 
 		app.inicio = function(){
 
 			app.titulo = 'Nueva Aplicación';
 			app.templates = [];
 			app.menus = [];
+			app.secciones = [];
 			app.categoria = '';
-			app.categorias = [{'id':1,'name':'menu'},{'id':2,'name':'secciones'},{'id':3,'name':'contenido'},{'id':4,'name':'consultas'},{'id':5,'name':'resultados'}]
 			app.nuevo = false;
 			app.modifica = false;
 			app.muestra = '';
-			app.tituloMuestra = 'Agregar Items de menu';
+			app.tituloMuestra = '';
 			app.datos = {
 				nombre:'',
 				descripcion:'',
 				imagen:'',
 				status:true,
 				templates:app.templates,
-				menus:app.menus
+				menus:app.menus,
+				secciones:app.secciones
 			}
 
+			app.categorias = categorias.data;
 			app.limpiavariabes();
 
+
+
 		};
+
+		app.guardaAplicacion = function(){
+
+			// aplicacion.guardar(app.datos);
+			console.log(app.datos);
+		}
 
 		app.limpiavariabes = function(){
 			app.categoria = '';
@@ -73,32 +84,6 @@
 			app.status = template.status;
 
 			$('#modal1').openModal();
-		};
-
-		app.addInfo = function(index){
-
-			indice = index;
-			var categoria = app.templates[index].categoria;
-			
-			app.modifica = true;
-
-			if (categoria == 1) {
-				app.tituloMuestra = 'Agregar Items de menu';
-				app.muestra = 'menu';
-			}else if (categoria == 2) {
-				app.tituloMuestra = 'Agregar Items de seccion';
-				app.muestra = 'secciones';
-			}else if (categoria == 3) {
-				app.tituloMuestra = 'Agregar contenido';
-				app.muestra = 'contenido';
-			}else if (categoria == 4) {
-				app.tituloMuestra = 'Agregar consulta';
-				app.muestra = 'consultas';
-			}else if (categoria == 5){
-				app.tituloMuestra = 'Agregar detalle';
-				app.muestra = 'resultado';
-			}
-
 		};
 
 
@@ -133,7 +118,105 @@
 			// app.nuevo = false;
 		};
 
+		app.addInfo = function(index){
 
+			indice = index;
+			var categoria = app.templates[index].categoria;
+			
+			app.modifica = true;
+			app.sinimg = true;
+
+			if (categoria == 1) {
+				app.tituloMuestra = 'Agregar Items de menu';
+				app.muestra = 'menu';
+				app.templates[index].menus = [];
+				app.itemsMenu = [];
+			}else if (categoria == 2) {
+				app.tituloMuestra = 'Agregar Items de seccion';
+				app.muestra = 'seccion';
+				app.templates[index].secciones = [];
+			}else if (categoria == 3) {
+				app.tituloMuestra = 'Agregar contenido';
+				app.muestra = 'contenido';
+			}else if (categoria == 4) {
+				app.tituloMuestra = 'Agregar consulta';
+				app.muestra = 'consultas';
+			}else if (categoria == 5){
+				app.tituloMuestra = 'Agregar detalle';
+				app.muestra = 'resultado';
+			}
+
+		};
+
+		app.addMenu = function(){
+
+			app.itemsMenu.push({
+				nombre:app.nombreMenu,
+				descripcion:app.descripcionMenu,
+				image:'',
+				destino:app.templateMen
+			});
+			app.templates[indice].menus.push({
+				nombre:app.nombreMenu,
+				descripcion:app.descripcionMenu,
+				image:'',
+				destino:app.templateMen
+			});
+
+
+			app.nombreMenu = '';
+			app.descripcionMenu = '';
+			app.templateMe = '';
+			app.sinimg = true;
+
+			Materialize.toast('Item agregado', 4000);
+
+		}
+
+		app.removeMenu = function(index){
+			app.itemsMenu.splice(index,1);
+			app.templates[indice].menus.splice(index,1);
+		}	
+
+		app.imagenApp = function (files) {
+	        if (files && files.length) {
+	        	for (var i = 0; i < files.length; i++) {
+		            var file = files[i];
+		            console.log(file);
+		            app.sinimg = false;
+		        }
+	        }
+	    };
+
+		app.imagenMenu = function (files) {
+	        if (files && files.length) {
+	        	for (var i = 0; i < files.length; i++) {
+		            var file = files[i];
+		            console.log(file);
+		            app.sinimg = false;
+		        }
+	        }
+	    };
+
+	    app.imagenSeccion = function (files) {
+	        if (files && files.length) {
+	        	for (var i = 0; i < files.length; i++) {
+		            var file = files[i];
+		            console.log(file);
+		            app.sinimg = false;
+		        }
+	        }
+	    };
+
+	    app.imagenContenido = function (files) {
+	        if (files && files.length) {
+	        	for (var i = 0; i < files.length; i++) {
+		            var file = files[i];
+		            console.log(file);
+		            app.sinimg = false;
+		        }
+	        }
+	    };
 
 	};
 

@@ -6,6 +6,8 @@ $colorInputs = #303F9F
 $colorInputsInvalid = #FF5252
 $colorBackgorund = #f5f5f5
 $colorButton = #FF5252
+$tabs-text-color = #FFFFFF
+$tabs-underline-color = red
 
 
 html,
@@ -54,6 +56,8 @@ nav .brand-logo
 .input-field input[type=search] ~ .mdi-navigation-close
 	color:rgba(255, 255, 255, 0.7);
 
+.menu .card.small .card-image
+	height:auto;
 
 .padding
 	padding:1em;
@@ -157,4 +161,11 @@ nav .brand-logo
 .dragoverfail 
 	border: 2px dashed red;
 
-	
+.tabs 
+	.tab a 
+		color: $tabs-text-color;
+		&:hover 
+			color: lightness($tabs-text-color, 80%);
+	.indicator 
+		background-color: $tabs-underline-color;
+
