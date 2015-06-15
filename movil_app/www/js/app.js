@@ -195,8 +195,3 @@ angular.module('starter', [
 })
 
 
-.filter('confiable', ['$sce', function($sce){
-    return function(text) {
-        return $sce.trustAsHtml(text);
-    };
-}])
