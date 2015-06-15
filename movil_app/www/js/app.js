@@ -172,6 +172,8 @@ angular.module('starter', [
       templateUrl: 'templates/digital.html'
   });
 
+
+  // vistas para validaciones
   $stateProvider.state('app.nogmm', {
       url: '/nogmm',
       templateUrl: 'templates/nogmm.html'
@@ -191,6 +193,49 @@ angular.module('starter', [
       url: '/novida',
       templateUrl: 'templates/novida.html'
   });
+
+
+  // menu red medica aun sin desarrollo y se queda manual
+    $stateProvider.state('app.redmedica', {
+        url: '/redmedica',        
+        templateUrl: 'templates/redmedica.html'
+        
+    });
+
+      // directorio
+      $stateProvider.state('app.directorio', {
+          url: '/directorio',          
+          templateUrl: 'templates/directorio.html',
+          controller:'DirectorioCtrl'
+          
+      });
+
+
+      // resultado directorio
+      $stateProvider.state('app.busquedadirectorio', {
+          url: '/busquedadirectorio',          
+          templateUrl: 'templates/busquedadirectorio.html',
+          controller:'DirectorioCtrl'
+          
+      });
+
+
+      // directorio hospitales
+      $stateProvider.state('app.hospitales', {
+          url: '/hospitales',          
+          templateUrl: 'templates/hospitales.html',
+          controller:'HospitalesCtrl'
+          
+      });
+
+
+      // resultado hospitales
+      $stateProvider.state('app.busquedahospitales', {
+          url: '/busquedahospitales',          
+          templateUrl: 'templates/busquedahospitales.html',
+          controller:'DirectorioCtrl'
+          
+      });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');

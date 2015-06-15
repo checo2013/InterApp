@@ -111,7 +111,7 @@ function templateService($http,$state,url,$q,verificaPermisos,storage){
                 if (categoria == 5) {
 
                     var seccion = data.data.name;
-                    // console.log(seccion);
+                    console.log(seccion);
 
                     if (seccion == 'Gastos médicos mayores' || seccion == 'Automovil' || seccion == 'Vida' || seccion == 'Casa Habitación') {
                         

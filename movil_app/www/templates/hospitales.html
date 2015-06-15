@@ -1,0 +1,64 @@
+<ion-view view-title="Directorio">
+
+    <ion-content>
+        <div class="hero" style="background-image: url('img/secciones/DirectorioDeHospitales.jpg');">
+            <div class="content">
+                <h3><a class="light">Directorio de Hospitales</a></h3>
+            </div>
+        </div>
+        <div class="text-center">
+          Hospitales en convenio.
+          <br>
+          Consulta el listado de nuestros Hospitales
+        </div>
+        <div class="card">
+          <div class="item item-text-wrap text-center"> 
+            <strong>
+              Es importante consultar la red hospitalaria a la que tienes derecho, para tener información más precisa marca al 01 800 911 9999
+            </strong>
+          </div>
+          <div class="item item-text-wrap text-center"> 
+            <form ng-submit="buscar()">
+              <fieldset>
+                <legend>Directorio de Hospitales</legend>
+                <br>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                          Estados
+                    </div>
+                    <select>
+                        <option selected>Selecciona</option>
+                        <option>Distrito Federal</option>
+                        <option>Estado de México</option>
+                        <option>Puebla</option>
+                        <option>Michoacan</option>
+                    </select>
+                </label>
+                <br>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                          Ciudad o Delegación
+                    </div>
+                    <select>
+                        <option selected>Selecciona</option>
+                        <option>Venustiano Carranza</option>
+                        <option>Xochimilco</option>
+                        <option>Cuahutemoc</option>
+                        <option>Benito Juarez</option>
+                    </select>
+                </label>
+                <br>
+                <div class="padding-leftright">
+                    <button type="submit" class="button button-raised button-full button-positive ink">Buscar</button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+    </ion-content>
+    
+</ion-view>
+
+<script>
+    Waves.attach('.button');
+</script>  
