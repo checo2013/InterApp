@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['app.services'])
 
-.controller('LoginCtrl', function($scope,sesion,mensajes) {
+.controller('LoginCtrl', function($scope,sesion,mensajes,$ionicModal) {
     
   $scope.inicio = function(){
     // inicializa los datos del formulario
@@ -21,6 +21,21 @@ angular.module('starter.controllers', ['app.services'])
       mensajes.alerta('Error','Debes aceptar los terminos y condiciones');
     }
   }
+
+
+  $ionicModal.fromTemplateUrl('termino.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+  $scope.openModal = function() {
+    $scope.modal.show();
+  };
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+
 })
 
 

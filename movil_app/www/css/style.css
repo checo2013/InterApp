@@ -52,6 +52,10 @@ body{
 	color: white;
 }
 
+.justificado{
+	text-align: justify;
+}
+
 .light{
 	font-weight: 300;
 }
@@ -62,10 +66,22 @@ body{
 }
 
 .list .item.item-bg-image h2{
-	bottom: 10px;
+
+	bottom: 0;
+	left: 0;
 	position: absolute;
 	font-weight: 400;
 	font-size: 22px;
+	width: 100%;
+	-webkit-line-clamp: 2 !important;
+	-webkit-box-orient: vertical;
+	text-overflow: ellipsis;
+	background-image: -webkit-linear-gradient(bottom,rgba(0, 0, 0, 0.69) 65%,transparent);
+	background-image: -webkit-linear-gradient(bottom,rgba(0, 0, 0, 0.69) 65%,transparent);
+	background-image: -moz-linear-gradient(bottom,rgba(0, 0, 0, 0.69) 65%,transparent);
+	background-image: -ms-linear-gradient(bottom,rgba(0, 0, 0, 0.69) 65%,transparent);
+	background-image: -o-linear-gradient(bottom,rgba(0, 0, 0, 0.69) 65%,transparent);
+	white-space: normal;
 }
 
 .list .item.item-bg-image>img{

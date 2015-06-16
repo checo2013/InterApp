@@ -111,7 +111,7 @@ function templateService($http,$state,url,$q,verificaPermisos,storage){
                     var seccion = data.data.name;
                     // console.log(seccion);
 
-                    if (seccion == 'Gastos médicos mayores' || seccion == 'Automovil' || seccion == 'Vida' || seccion == 'Casa Habitacion') {
+                    if (seccion == 'Gastos médicos mayores' || seccion == 'Automovil' || seccion == 'Vida' || seccion == 'Casa Habitación') {
                         
                         console.log('Si es una seccion a validar');
                         if(verificaPermisos.seccion(seccion)){
@@ -201,7 +201,7 @@ function verificaPermisos(storage,$q,$state){
             }else if(sitio == 'Vida' && storage.get('VIDA') == 'true'){
                 console.log('si hay VIDA');
                 return true;
-            }else if(sitio == 'Casa Habitacion' && storage.get('CASA') == 'true'){
+            }else if(sitio == 'Casa Habitación' && storage.get('CASA') == 'true'){
                 console.log('si hay CASA');
                 return true;
             }else{
@@ -212,7 +212,7 @@ function verificaPermisos(storage,$q,$state){
                     $state.go('app,noautomovil');
                 }else if(sitio == 'Vida'){
                     $state.go('app.novida');
-                }else if(sitio == 'Casa Habitacion'){
+                }else if(sitio == 'Casa Habitación'){
                     $state.go('app.nocasa');
                 }
 
@@ -231,8 +231,8 @@ templateService.$inject = ['$http','$state','url','$q','verificaPermisos','stora
 verificaPermisos.$inject = ['storage','$q','$state'];
 
 angular.module('app.services', ['ngResource'])
-// .constant('url', 'http://iterapp.daseda.net/api/')
-.constant('url', 'http://localhost/interapp/public/api/')
+.constant('url', 'http://iterapp.daseda.net/api/')
+// .constant('url', 'http://localhost/interapp/public/api/')
 .factory("sesion",sesion)
 .factory("loading",loading)
 .factory("mensajes",mensajes)
