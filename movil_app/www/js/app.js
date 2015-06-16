@@ -35,6 +35,9 @@ angular.module('starter', [
 
     var username = storage.get('username',false);
 
+    $rootScope.username = username;
+    $rootScope.nombre = storage.get('nombre','');
+
     if (username !== false) {
       $state.go('app.home');
     };

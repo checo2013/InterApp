@@ -11,6 +11,7 @@ function sesion($rootScope, $http, $q, url, $ionicLoading, $ionicPopup, $state, 
 
                 if (credenciales.recordar) {
                     storage.set('username',data.completo);
+                    storage.set('nombre',data.nombre + ' ' + data.paterno);
                 };
 
                 storage.set('user',data.id);
@@ -42,6 +43,7 @@ function sesion($rootScope, $http, $q, url, $ionicLoading, $ionicPopup, $state, 
                 });
 
                 $rootScope.completo = data.completo;
+                $rootScope.nombre = data.nombre + ' ' + data.paterno;
 
                 // // esta aplicacion simpre sera la 1
                 $http.get(url + 'movil/app/1').success(function (data){
