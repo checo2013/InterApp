@@ -233,32 +233,106 @@ angular.module('starter', [
       $stateProvider.state('app.directorios', {
           url: '/directorios/:estado/:ciudad/:especialidad',          
           templateUrl: 'templates/directorios.html',
+          controller:'MedicosCtrl',
           resolve:{
-            datos:function($stateParams,loading,consultas){
-              
+            info:function($stateParams,loading,consultas){
+              loading.inicio();
+                return consultas.medicos($stateParams.estado,$stateParams.ciudad,$stateParams.especialidad);
             }
           }
       });
 
 
+      // busqueda de hospitales
+      $stateProvider.state('app.busquedahospitales', {
+          url: '/busquedahospitales',          
+          templateUrl: 'templates/busquedahospitales.html',
+          controller:'BusquedaHospitalesCtrl',
+          resolve:{
+            info:function($q,loading,consultas){
 
+                loading.inicio();
 
-      // directorio hospitales
-      $stateProvider.state('app.hospitales', {
-          url: '/hospitales',          
-          templateUrl: 'templates/hospitales.html',
-          controller:'HospitalesCtrl'
+                var promesa      = $q.defer(),                    
+                    estados       = consultas.estados(),
+                    ciudades     = consultas.ciudades();
+
+                $q.all([estados,ciudades]).then(function (data){
+                  loading.fin();
+                  promesa.resolve(data);
+                });
+
+                return promesa.promise;
+
+            }
+          }
           
       });
 
 
       // resultado hospitales
-      $stateProvider.state('app.busquedahospitales', {
-          url: '/busquedahospitales',          
-          templateUrl: 'templates/busquedahospitales.html',
-          controller:'DirectorioCtrl'
+      $stateProvider.state('app.hospitales', {
+          url: '/hospitales/:estado/:ciudad',          
+          templateUrl: 'templates/hospitales.html',
+          controller:'HospitalesCtrl',
+          resolve:{
+            info:function($stateParams,loading,consultas){
+              loading.inicio();
+                return consultas.hospitales($stateParams.estado,$stateParams.ciudad);
+            }
+          }
           
       });
+
+
+    // menu  beneficios inter
+    $stateProvider.state('app.beneficios', {
+        url: '/beneficios',        
+        templateUrl: 'templates/beneficios.html'
+        
+    });
+
+      // busqueda de hospitales inter
+      $stateProvider.state('app.busquedainterhospitales', {
+          url: '/busquedainterhospitales',          
+          templateUrl: 'templates/busquedainterhospitales.html',
+          controller:'BusquedaInterHospitalesCtrl',
+          resolve:{
+            info:function($q,loading,consultas){
+
+                loading.inicio();
+
+                var promesa      = $q.defer(),                    
+                    estados       = consultas.estados(),
+                    ciudades     = consultas.ciudades();
+
+                $q.all([estados,ciudades]).then(function (data){
+                  loading.fin();
+                  promesa.resolve(data);
+                });
+
+                return promesa.promise;
+
+            }
+          }
+          
+      });
+
+      // resultado hospitales inter
+      $stateProvider.state('app.interhospitales', {
+          url: '/interhospitales/:estado/:ciudad',          
+          templateUrl: 'templates/interhospitales.html',
+          controller:'InterHospitalesCtrl',
+          resolve:{
+            info:function($stateParams,loading,consultas){
+              loading.inicio();
+                return consultas.interhospitales($stateParams.estado,$stateParams.ciudad);
+            }
+          }
+          
+      });
+
+
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');

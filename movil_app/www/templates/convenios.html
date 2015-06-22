@@ -5,25 +5,19 @@
 
             <div class="list condensed-space no-padding">
 
-                <div class="card dark-bg" ng-repeat="item in tamplate.menus">
-                    <a class="item clear-bg item-bg-image" ng-click="ir(item.template_to)" >
-                        <h2>{{ item.name }}</h2>
-                        <img ng-src="{{ item.image }}">
-                    </a>
-                </div>
-                <div ng-if="tamplate.principal == '1'" class="card dark-bg">
+                <div class="card dark-bg">
                     <a class="item clear-bg item-bg-image" href="#/app/beneficios">
-                        <h2>Beneficios Adicionales INTER</h2>           
+                        <h2>Lavoratorios</h2>           
                         <img src="img/secciones/BenficiosAdicionales.jpg">
                     </a>
                 </div>
-                <div ng-if="tamplate.principal == '1'" class="card dark-bg">
+                <div class="card dark-bg">
                     <a class="item clear-bg item-bg-image" href="#/app/redmedica">
-                        <h2>Red Médica</h2>                        
+                        <h2>Check-Ups</h2>                        
                         <img src="img/secciones/RedMedicaMENÚ.jpg">
                     </a>
                 </div>
-                <div ng-if="tamplate.principal == '1'" class="card dark-bg">
+                <div class="card dark-bg">
                     <a class="item clear-bg item-bg-image" href="#/app/digital">
                         <h2>Digital</h2>           
                         <img src="img/secciones/Digital.png">

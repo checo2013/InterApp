@@ -235,6 +235,15 @@ function consultas($http,url){
         },
         especialidades:function(){
             return $http.get(url + 'movil/especialidades');
+        },
+        medicos:function(estado,ciudad,especialidad){
+            return $http.get(url + 'movil/medicos/' + estado + '/' + ciudad + '/' + especialidad);
+        },
+        hospitales:function(estado,ciudad){
+            return $http.get(url + 'movil/hospitales/' + estado + '/' + ciudad);
+        },
+        interhospitales:function(estado,ciudad){
+            return $http.get(url + 'movil/interhospitales/' + estado + '/' + ciudad);
         }
     }
 }

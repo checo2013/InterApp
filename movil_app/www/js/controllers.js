@@ -98,6 +98,24 @@ angular.module('starter.controllers', ['app.services'])
   }
 })
 
+.controller('BusquedaInterHospitalesCtrl', function($scope,$state, info) {
+
+  $scope.estados = info[0].data;
+  $scope.ciudades = info[1].data;
+
+  $scope.datos = {
+    estado:'',
+    ciudad:''
+  }
+
+  $scope.buscar = function() {
+    
+    $state.go('app.interhospitales',{estado:$scope.datos.estado,ciudad:$scope.datos.ciudad});
+
+  };
+
+})
+
 
 .controller('BusquedaDirectorioCtrl', function($scope,$state,$timeout,loading, info) {
 
@@ -112,25 +130,44 @@ angular.module('starter.controllers', ['app.services'])
   }
 
   $scope.buscar = function() {
-    // loading.inicio();
-    // $timeout(function(){
-    //   loading.fin();
-    //   $state.go('app.directorios');
-    // },500);
-    console.log($scope.datos);
+    
+    $state.go('app.directorios',{estado:$scope.datos.estado,ciudad:$scope.datos.ciudad,especialidad:$scope.datos.especialidad});
+
   };
 
 })
 
-.controller('HospitalesCtrl', function($scope,$state,$timeout,loading) {
+.controller('MedicosCtrl', function($scope,info,loading) {
+  loading.fin();
+  console.log(info.data);
+  $scope.medicos = info.data;
+})
+
+
+.controller('BusquedaHospitalesCtrl', function($scope,$state, info) {
+
+  $scope.estados = info[0].data;
+  $scope.ciudades = info[1].data;
+
+  $scope.datos = {
+    estado:'',
+    ciudad:''
+  }
+
   $scope.buscar = function() {
-    loading.inicio();
-    $timeout(function(){
-      loading.fin();
-      $state.go('app.busquedahospitales');
-    },500);
+    
+    $state.go('app.hospitales',{estado:$scope.datos.estado,ciudad:$scope.datos.ciudad});
+
   };
+
 })
+
+.controller('HospitalesCtrl', function($scope,info,loading) {
+  loading.fin();
+  console.log(info.data);
+  $scope.hospitales = info.data;
+})
+
 
 .controller('ModulosHospitalesCtrl', function($scope,$state,$timeout,loading) {
   $scope.buscar = function() {

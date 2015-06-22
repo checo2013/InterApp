@@ -1,61 +1,52 @@
-<ion-view view-title="Directorio">
+<ion-view view-title="InterApp">
 
     <ion-content>
         <div class="hero" style="background-image: url('img/secciones/DirectorioDeHospitales.jpg');">
             <div class="content">
-                <h3><a class="light">Resultado</a></h3>
+                <h3><a class="light">Directorio de Hospitales</a></h3>
             </div>
         </div>
-        <div class="text-left margin-left">
-          <h2>Hospitales</h2>
+        <div class="text-center">
+          Hospitales en convenio.
+          <br>
+          Consulta el listado de nuestros Hospitales
         </div>
-        <div class="list resultados">
-
-          <div class="card padding">
-            <a class="item item-icon-left" href="#">
-              <i class="icon ion-person"></i>
-              Hospital ABC Observatorio
-            </a>
-            <a class="item item-icon-left" href="#">
-              <i class="icon ion-ios-telephone-outline"></i>
-              Tel. 56620109
-            </a>
-            <a class="item item-icon-left" href="#">
-              <i class="icon ion-ios-home-outline"></i>
-              Sur 136 No.116 
-            </a>
-            <a class="item item-icon-left" href="#">
-              Colonia Las Americas
-            </a>
-            <a class="item item-icon-left" href="#">
-              <i class="icon ion-social-google"></i>
-              www.abchospital.com
-            </a>
+        <div class="card">
+          <div class="item item-text-wrap text-center"> 
+            <strong>
+              La información se indica con fines informativos, Interprotección no se hace responsable de la información aquí establecida, en el entendido que la misma podrá variar sin previo aviso.
+            </strong>
           </div>
-
-          <div class="card padding">
-            <a class="item item-icon-left" href="#">
-              <i class="icon ion-person"></i>
-              Hospital ABC Observatorio
-            </a>
-            <a class="item item-icon-left" href="#">
-              <i class="icon ion-ios-telephone-outline"></i>
-              Tel. 56620109
-            </a>
-            <a class="item item-icon-left" href="#">
-              <i class="icon ion-ios-home-outline"></i>
-              Sur 136 No.116 
-            </a>
-            <a class="item item-icon-left" href="#">
-              
-              Colonia Las Americas
-            </a>
-            <a class="item item-icon-left" href="#">
-              <i class="icon ion-social-google"></i>
-              www.abchospital.com
-            </a>
+          <div class="item item-text-wrap text-center busqueda"> 
+            <form ng-submit="buscar()">
+              <fieldset>
+                <legend>Directorio de Hospitales</legend>
+                <br>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                          Estado
+                    </div>
+                    <select ng-options="estado.id as estado.name for estado in estados" ng-model="datos.estado">
+                        <option value="">Selecciona</option>
+                    </select>
+                </label>
+                <br>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                          Ciudad o Delegación
+                    </div>
+                    <select ng-options="ciudad.id as ciudad.name for ciudad in ciudades | filter:{estado_id:datos.estado}" ng-model="datos.ciudad">
+                        <option value="">Selecciona</option>
+                    </select>
+                </label>
+                <br>
+                
+                <div class="padding-leftright">
+                    <button type="submit" class="button button-raised button-full button-positive ink">Buscar</button>
+                </div>
+              </fieldset>
+            </form>
           </div>
-
         </div>
     </ion-content>
     

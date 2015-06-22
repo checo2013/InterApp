@@ -1,13 +1,13 @@
-<ion-view view-title="InterApp">
+<ion-view view-title="Interapp">
 
     <ion-content>
-        <div class="hero" style="background-image: url('img/secciones/CheckUps.jpg');">
+        <div class="hero" style="background-image: url('img/secciones/ModulosINTER.png);">
             <div class="content">
                 <h3><a class="light">Resultado</a></h3>
             </div>
         </div>
         <div class="text-left margin-left">
-          <h2>Especialidad</h2>
+          <h2>Hospitales</h2>
         </div>
         <div class="list resultados">
 
@@ -15,26 +15,18 @@
             No se encontraron resultados
           </div>
           
-          <div class="card padding" ng-repeat="medico in medicos">
+          <div class="card padding" ng-repeat="hospital in hospitales">
             <a class="item item-icon-left" href="#">
               <i class="icon ion-person"></i>
-              {{medico.name}}
+              {{hospital.name}}
             </a>
             <a class="item item-icon-left" href="#">
               <i class="icon ion-ios-home-outline"></i>
-              {{medico.calle}} <br>
-              {{medico.numero}}
-            </a>
-            <a class="item item-icon-left" href="#">
-              {{medico.colonia}} <br>
-              {{medico.delegacion}} <br>
-            </a>
-            <a class="item item-icon-left" href="#">
-              {{medico.codigo}}
+              {{hospital.direccion}}
             </a>
             <a class="item item-icon-left" href="#">
               <i class="icon ion-ios-telephone-outline"></i>
-              {{medico.telefono}}
+              {{hospital.telefono}}
             </a>
           </div>
 
