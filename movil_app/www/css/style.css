@@ -10,8 +10,17 @@ body{
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
 }
 
-.card .item{
+
+.seccion .item{
 	padding: 1.5em;
+}
+
+.busqueda{
+	padding: 1.5em 0 !important;
+}
+
+.item-select select{
+	  padding: 14px 48px 16px 0;
 }
 
 .avatar{

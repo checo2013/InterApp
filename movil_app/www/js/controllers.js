@@ -98,14 +98,28 @@ angular.module('starter.controllers', ['app.services'])
   }
 })
 
-.controller('DirectorioCtrl', function($scope,$state,$timeout,loading) {
+
+.controller('BusquedaDirectorioCtrl', function($scope,$state,$timeout,loading, info) {
+
+  $scope.especialidades = info[0].data;
+  $scope.estados = info[1].data;
+  $scope.ciudades = info[2].data;
+
+  $scope.datos = {
+    estado:'',
+    ciudad:'',
+    especialidad:''
+  }
+
   $scope.buscar = function() {
-    loading.inicio();
-    $timeout(function(){
-      loading.fin();
-      $state.go('app.busquedadirectorio');
-    },500);
+    // loading.inicio();
+    // $timeout(function(){
+    //   loading.fin();
+    //   $state.go('app.directorios');
+    // },500);
+    console.log($scope.datos);
   };
+
 })
 
 .controller('HospitalesCtrl', function($scope,$state,$timeout,loading) {

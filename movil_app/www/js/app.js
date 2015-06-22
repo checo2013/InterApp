@@ -202,22 +202,45 @@ angular.module('starter', [
         
     });
 
-      // directorio
-      $stateProvider.state('app.directorio', {
-          url: '/directorio',          
-          templateUrl: 'templates/directorio.html',
-          controller:'DirectorioCtrl'
-          
-      });
-
-
-      // resultado directorio
+      // busqueda de directorio de medicos
       $stateProvider.state('app.busquedadirectorio', {
           url: '/busquedadirectorio',          
           templateUrl: 'templates/busquedadirectorio.html',
-          controller:'DirectorioCtrl'
+          controller:'BusquedaDirectorioCtrl',
+          resolve:{
+            info:function($q,loading,consultas){
+
+                loading.inicio();
+
+                var promesa      = $q.defer(),
+                    especialidades = consultas.especialidades(),
+                    estados       = consultas.estados(),
+                    ciudades     = consultas.ciudades();
+
+                $q.all([especialidades,estados,ciudades]).then(function (data){
+                  loading.fin();
+                  promesa.resolve(data);
+                });
+
+                return promesa.promise;
+
+            }
+          }
           
       });
+
+      // directorio
+      $stateProvider.state('app.directorios', {
+          url: '/directorios/:estado/:ciudad/:especialidad',          
+          templateUrl: 'templates/directorios.html',
+          resolve:{
+            datos:function($stateParams,loading,consultas){
+              
+            }
+          }
+      });
+
+
 
 
       // directorio hospitales

@@ -225,12 +225,28 @@ function verificaPermisos(storage,$q,$state){
 }
 
 
+function consultas($http,url){
+    return{
+        ciudades:function(){
+            return $http.get(url + 'movil/ciudades');
+        },
+        estados:function(){
+            return $http.get(url + 'movil/estados');
+        },
+        especialidades:function(){
+            return $http.get(url + 'movil/especialidades');
+        }
+    }
+}
+
+
 sesion.$inject = ['$rootScope', '$http', '$q', 'url','$ionicLoading','$ionicPopup','$state','storage'];
 loading.$inject = ['$ionicLoading'];
 mensajes.$inject = ['$ionicPopup'];
 storage.$inject = ['$window'];
 templateService.$inject = ['$http','$state','url','$q','verificaPermisos','storage'];
 verificaPermisos.$inject = ['storage','$q','$state'];
+consultas.$inject = ['$http', 'url'];
 
 angular.module('app.services', ['ngResource'])
 .constant('url', 'http://iterapp.daseda.net/api/')
@@ -241,6 +257,7 @@ angular.module('app.services', ['ngResource'])
 .factory("storage",storage)
 .factory("templateService",templateService)
 .factory("verificaPermisos",verificaPermisos)
+.factory("consultas",consultas)
 
 
 
