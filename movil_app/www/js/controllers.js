@@ -4,9 +4,11 @@ angular.module('starter.controllers', ['app.services'])
     
   $scope.inicio = function(){
     // inicializa los datos del formulario
+    // eag10@live.com.mx
+    // 60003734
     $scope.datos = {
-      email:'eag10@live.com.mx',
-      password:'60003734',
+      email:'',
+      password:'',
       aceptar:false,
       recordar:false
     }
@@ -162,10 +164,41 @@ angular.module('starter.controllers', ['app.services'])
 
 })
 
+
+.controller('BusquedaCristalesCtrl', function($scope,$state, info) {
+
+  $scope.estados = info[0].data;
+  $scope.ciudades = info[1].data;
+
+  $scope.datos = {
+    estado:'',
+    ciudad:''
+  }
+
+  $scope.buscar = function() {
+    console.log($scope.datos);
+    $state.go('app.cristales',{estado:$scope.datos.estado,ciudad:$scope.datos.ciudad});
+
+  };
+
+})
+
 .controller('HospitalesCtrl', function($scope,info,loading) {
   loading.fin();
   console.log(info.data);
   $scope.hospitales = info.data;
+})
+
+
+.controller('InterHospitalesCtrl', function($scope,info,loading) {
+  loading.fin();
+  $scope.hospitales = info.data;
+})
+
+
+.controller('CristalesCtrl', function($scope,info,loading) {
+  loading.fin();
+  $scope.convenios = info.data;
 })
 
 
@@ -178,18 +211,6 @@ angular.module('starter.controllers', ['app.services'])
     },500);
   };
 })
-
-.controller('CristalesCtrl', function($scope,$state,$timeout,loading) {
-  $scope.buscar = function() {
-    loading.inicio();
-    $timeout(function(){
-      loading.fin();
-      $state.go('app.busquedacristales');
-    },500);
-  };
-})
-
-
 
 
 // angular.module('starter.controllers', [])

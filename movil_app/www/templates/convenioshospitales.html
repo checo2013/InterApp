@@ -1,0 +1,51 @@
+<ion-view view-title="Interapp">
+
+    <ion-content>
+        <div class="hero" style="background-image: url('img/secciones/Hospitales.png');">
+            <div class="content">
+                <h3><a class="light">Hospitales</a></h3>
+            </div>
+        </div>
+        <br>
+        <div class="text-left margin-left">
+          
+          Interprotección preocupado por brindarte un mejor servicio en atenciones hospitalarias pone a tu disposición algunos beneficios exclusivos que varían depende el Hospital, como por ejemplo:
+
+          <ul class="padding">
+            <li>Habitación superior a la estándar (sujeto a disponibilidad).</li>
+            <li>Descuentos en estudios de laboratorio e imagen.</li>        
+            <li>Red médica cerrada de especialistas con consultas a costo preferencial. </li>             
+            <li>Descuentos preferenciales en servicios externos. </li>
+          </ul>
+        
+        </div>
+        
+        <div class="list resultados">
+
+          <div ng-if="convenios.length == 0" class="card padding">
+            No se encontraron resultados
+          </div>
+          
+          <div class="card padding" ng-repeat="convenio in convenios">
+            <a class="item item-icon-left" href="#">
+              <i class="icon ion-person"></i>
+              {{convenio.proveedor}}
+            </a>
+            <a class="item item-icon-left" href="#">
+              <i class="icon ion-ios-home-outline"></i>
+              {{convenio.direccion}}
+            </a>
+            <a class="item item-icon-left" href="#">
+              <i class="icon ion-ios-telephone-outline"></i>
+              {{convenio.telefono}}
+            </a>
+          </div>
+
+        </div>
+    </ion-content>
+    
+</ion-view>
+
+<script>
+    Waves.attach('.button');
+</script>  

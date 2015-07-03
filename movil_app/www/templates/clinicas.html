@@ -1,0 +1,53 @@
+<ion-view view-title="Interapp">
+
+    <ion-content>
+        <div class="hero" style="background-image: url('img/secciones/ClinicasDeCirugiaAmbulatoria.jpg');">
+            <div class="content">
+                <h3><a class="light">Clinicas</a></h3>
+            </div>
+        </div>
+        <br>
+        <div class="text-left margin-left">
+          
+          <br>
+          Representa el 60% del total de los procedimientos médicos, ofreciendo grandes ventajas para los pacientes, tales como:
+          <br>
+          <br>
+          • Pronta reincorporación a la actividad acostumbrada. <br>
+          • Estrecha relación médico paciente. <br>
+          • Disminución de tiempos. <br>
+          • Menor exposición al riesgo de infección. <br>
+          • REDUCCIÓN DE COSTOS de hospitalización hasta en un 50%.
+        </div>
+        
+        </div>
+        <br>
+        <div class="list resultados">
+
+          <div ng-if="convenios.length == 0" class="card padding">
+            No se encontraron resultados
+          </div>
+          
+          <div class="card padding" ng-repeat="convenio in convenios">
+            <a class="item item-icon-left" href="#">
+              <i class="icon ion-person"></i>
+              {{convenio.proveedor}}
+            </a>
+            <a class="item item-icon-left" href="#">
+              <i class="icon ion-ios-home-outline"></i>
+              {{convenio.direccion}}
+            </a>
+            <a class="item item-icon-left" href="#">
+              <i class="icon ion-ios-telephone-outline"></i>
+              {{convenio.telefono}}
+            </a>
+          </div>
+
+        </div>
+    </ion-content>
+    
+</ion-view>
+
+<script>
+    Waves.attach('.button');
+</script>  

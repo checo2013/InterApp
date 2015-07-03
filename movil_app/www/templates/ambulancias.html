@@ -1,32 +1,36 @@
 <ion-view view-title="Interapp">
 
     <ion-content>
-        <div class="hero" style="background-image: url('img/secciones/ModulosINTER.png');">
+        <div class="hero" style="background-image: url('img/secciones/Ambulancias.png');">
             <div class="content">
-                <h3><a class="light">Resultado</a></h3>
+                <h3><a class="light">Red Médica</a></h3>
             </div>
         </div>
+        <br>
         <div class="text-left margin-left">
-          <h2>Hospitales</h2>
+          
+          Interprotección preocupado por brindarte mejores opciones en atención médica prehospitalaria en el momento oportuno, pone a tu disposición los descuentos preferenciales en traslados por ambulancia aérea y/o terrestre.
+        
         </div>
+        
         <div class="list resultados">
 
-          <div ng-if="hospitales.length == 0" class="card padding">
+          <div ng-if="convenios.length == 0" class="card padding">
             No se encontraron resultados
           </div>
           
-          <div class="card padding" ng-repeat="hospital in hospitales">
+          <div class="card padding" ng-repeat="convenio in convenios">
             <a class="item item-icon-left" href="#">
               <i class="icon ion-person"></i>
-              {{hospital.name}}
+              {{convenio.proveedor}}
             </a>
             <a class="item item-icon-left" href="#">
               <i class="icon ion-ios-home-outline"></i>
-              {{hospital.direccion}}
+              {{convenio.direccion}}
             </a>
             <a class="item item-icon-left" href="#">
               <i class="icon ion-ios-telephone-outline"></i>
-              {{hospital.telefono}}
+              {{convenio.telefono}}
             </a>
           </div>
 

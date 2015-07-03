@@ -1,0 +1,77 @@
+<ion-view view-title="Interapp">
+
+    <ion-content>
+        <div class="hero" style="background-image: url('img/secciones/Farmacias.png');">
+            <div class="content">
+                <h3><a class="light">Farmacias</a></h3>
+            </div>
+        </div>
+        <br>
+        <div class="text-left margin-left">
+          
+          Interprotección te ofrece una Farmacia especializada en tratamientos complejos como lo son los padecimientos crónico-degenerativos de largo plazo Te apoyamos en cada paso del tratamiento, calendarizando tu resurtido, algunos padecimientos relacionados son:
+          <div class="row">
+            <div class="col">
+              <ul>
+                <li>Anemia</li>
+                <br>
+                <li>Falla renal crónica</li>
+                <br>
+                <li>Trombosis</li> 
+                <br>
+                <li>Hematología</li>
+                <br>
+                <li>Hepatitis</li>
+                <br>
+                <li>Enfermedad de Gaucher</li>
+                <br>
+                <li>Deficiencia de la hormona de crecimiento</li>
+              </ul>
+              
+            </div>
+            <div class="col">
+              <ul>
+                <li>Asma</li>
+                <br>
+                <li>Enfermedades de Crohn</li>
+                <br>
+                <li>Enfermedad de Fabry</li> 
+                <br>
+                <li>Hemofilia</li>
+                <br>
+                <li>VIH/SIDA</li>
+              </ul>
+            </div>
+          </div>
+        
+        </div>
+        
+        <div class="list resultados">
+
+          <div ng-if="convenios.length == 0" class="card padding">
+            No se encontraron resultados
+          </div>
+          
+          <div class="card padding" ng-repeat="convenio in convenios">
+            <a class="item item-icon-left" href="#">
+              <i class="icon ion-person"></i>
+              {{convenio.proveedor}}
+            </a>
+            <a class="item item-icon-left" href="#">
+              <i class="icon ion-ios-home-outline"></i>
+              {{convenio.direccion}}
+            </a>
+            <a class="item item-icon-left" href="#">
+              <i class="icon ion-ios-telephone-outline"></i>
+              {{convenio.telefono}}
+            </a>
+          </div>
+
+        </div>
+    </ion-content>
+    
+</ion-view>
+
+<script>
+    Waves.attach('.button');
+</script>  

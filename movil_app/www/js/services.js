@@ -244,6 +244,12 @@ function consultas($http,url){
         },
         interhospitales:function(estado,ciudad){
             return $http.get(url + 'movil/interhospitales/' + estado + '/' + ciudad);
+        },
+        conveniosinter:function(tipo){
+            return $http.get(url + 'movil/conveniosinter/' + tipo);
+        },
+        conveniosinterEstado:function(tipo,estado,ciudad){
+            return $http.get(url + 'movil/conveniosinter/' + tipo + '/' + estado + '/' + ciudad);
         }
     }
 }

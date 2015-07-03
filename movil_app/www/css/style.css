@@ -69,6 +69,10 @@ body{
 	font-weight: 300;
 }
 
+.list .item{
+	white-space: normal;
+}
+
 .list .item.item-bg-image.x2{
 	min-height: 250px;
 	max-height: 250px;

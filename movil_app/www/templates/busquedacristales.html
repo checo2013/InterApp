@@ -1,0 +1,62 @@
+<ion-view view-title="InterApp">
+
+    <ion-content>
+        <div class="hero" style="background-image: url('img/secciones/Cristales.jpg');">
+            <div class="content">
+                <h3><a class="light">Cristales</a></h3>
+            </div>
+        </div>
+        <div class="text-center">
+            <br>
+            Roto Cristales
+            <br>
+            Encuentra tu sucursal más cercana
+        </div>
+        <div class="card">
+          <div class="item item-text-wrap text-center"> 
+            <strong>
+              Interprotección pone a tu disposición un convenio con beneficios exclusivos en Cristales automotrices como:
+              <br>
+              Instalación de cristales a domicilio. <br>
+              Reparación de cristales. <br>
+              Eliminación de deducible por reparación de cristales.
+            </strong>
+          </div>
+          <div class="item item-text-wrap text-center busqueda"> 
+            <form ng-submit="buscar()">
+              <fieldset>
+                <legend>Directorio ROTO cristales</legend>
+                <br>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                          Estado
+                    </div>
+                    <select ng-options="estado.id as estado.name for estado in estados" ng-model="datos.estado">
+                        <option value="">Selecciona</option>
+                    </select>
+                </label>
+                <br>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                          Ciudad o Delegación
+                    </div>
+                    <select ng-options="ciudad.id as ciudad.name for ciudad in ciudades | filter:{estado_id:datos.estado}" ng-model="datos.ciudad">
+                        <option value="">Selecciona</option>
+                    </select>
+                </label>
+                <br>
+                
+                <div class="padding-leftright">
+                    <button type="submit" class="button button-raised button-full button-positive ink">Buscar</button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+    </ion-content>
+    
+</ion-view>
+
+<script>
+    Waves.attach('.button');
+</script>  

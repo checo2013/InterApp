@@ -332,6 +332,205 @@ angular.module('starter', [
           
       });
 
+      // menu convenios
+      $stateProvider.state('app.conveniosinter', {
+          url: '/conveniosinter',          
+          templateUrl: 'templates/conveniosinter.html' 
+      });
+
+        // menu laboratorios
+        $stateProvider.state('app.laboratorios', {
+            url: '/laboratorios',            
+            templateUrl: 'templates/laboratorios.html',
+            resolve:{
+              info:function(loading,consultas){
+                loading.inicio();
+                return consultas.conveniosinter(9);
+              }
+            },
+            controller:function($scope,info,loading){
+              loading.fin();
+              $scope.laboratorios = info.data;
+            }
+        });
+
+        // menu checkups
+        $stateProvider.state('app.checkups', {
+            url: '/checkups',            
+            templateUrl: 'templates/checkups.html'
+            
+        });
+
+          // menu checkups hospitales grupo angeles
+          $stateProvider.state('app.checkangeles', {
+              url: '/checkangeles',              
+              templateUrl: 'templates/checkangeles.html'
+      
+          });
+
+          // menu checkups hospital medica sur
+          $stateProvider.state('app.checksur', {
+              url: '/checksur',              
+              templateUrl: 'templates/checksur.html'
+      
+          });
+
+        // menu clinicas de cirugia ambulatoria
+        $stateProvider.state('app.clinicas', {
+            url: '/clinicas',            
+            templateUrl: 'templates/clinicas.html',
+            resolve:{
+              info:function(loading,consultas){
+                loading.inicio();
+                return consultas.conveniosinter(5);
+              }
+            },
+            controller:function($scope,info,loading){
+              loading.fin();
+              $scope.convenios = info.data;
+            }
+            
+        });
+
+        // busqueda cristales
+        $stateProvider.state('app.busquedacristales', {
+            url: '/busquedacristales',              
+            templateUrl: 'templates/busquedacristales.html',
+            controller:'BusquedaCristalesCtrl',
+            resolve:{
+              info:function($q,loading,consultas){
+
+                  loading.inicio();
+
+                  var promesa      = $q.defer(),                    
+                      estados       = consultas.estados(),
+                      ciudades     = consultas.ciudades();
+
+                  $q.all([estados,ciudades]).then(function (data){
+                    loading.fin();
+                    promesa.resolve(data);
+                  });
+
+                  return promesa.promise;
+
+              }
+            }
+    
+        });
+        
+          // menu cristales
+          $stateProvider.state('app.cristales', {
+              url: '/cristales/:estado/:ciudad',            
+              templateUrl: 'templates/cristales.html',
+              controller:'CristalesCtrl',
+              resolve:{
+                info:function($stateParams,loading,consultas){
+                  loading.inicio();
+                    return consultas.conveniosinterEstado(2,$stateParams.estado,$stateParams.ciudad);
+                }
+              }
+              
+          });
+
+
+        // menu talleres
+        $stateProvider.state('app.talleres', {
+            url: '/talleres',            
+            templateUrl: 'templates/talleres.html',
+            resolve:{
+              info:function(loading,consultas){
+                loading.inicio();
+                return consultas.conveniosinter(1);
+              }
+            },
+            controller:function($scope,info,loading){
+              loading.fin();
+              $scope.convenios = info.data;
+            }
+            
+        });
+
+        // menu convenios hospitales
+        $stateProvider.state('app.convenioshospitales', {
+            url: '/convenioshospitales',            
+            templateUrl: 'templates/convenioshospitales.html',
+            resolve:{
+              info:function(loading,consultas){
+                loading.inicio();
+                return consultas.conveniosinter(3);
+              }
+            },
+            controller:function($scope,info,loading){
+              loading.fin();
+              $scope.convenios = info.data;
+            }
+        });
+
+        // menu convenios red medica
+        $stateProvider.state('app.conveniosredmedica', {
+            url: '/conveniosredmedica',            
+            templateUrl: 'templates/conveniosredmedica.html',
+            resolve:{
+              info:function(loading,consultas){
+                loading.inicio();
+                return consultas.conveniosinter(6);
+              }
+            },
+            controller:function($scope,info,loading){
+              loading.fin();
+              $scope.convenios = info.data;
+            }
+        });
+
+        // menu ambulancias
+        $stateProvider.state('app.ambulancias', {
+            url: '/ambulancias',            
+            templateUrl: 'templates/ambulancias.html',
+            resolve:{
+              info:function(loading,consultas){
+                loading.inicio();
+                return consultas.conveniosinter(8);
+              }
+            },
+            controller:function($scope,info,loading){
+              loading.fin();
+              $scope.convenios = info.data;
+            }
+        });
+
+        // menu farmacias
+        $stateProvider.state('app.farmacias', {
+            url: '/farmacias',            
+            templateUrl: 'templates/farmacias.html',
+            resolve:{
+              info:function(loading,consultas){
+                loading.inicio();
+                return consultas.conveniosinter(10);
+              }
+            },
+            controller:function($scope,info,loading){
+              loading.fin();
+              $scope.convenios = info.data;
+            }
+            
+        });
+
+        // menu servicios enfermeria
+        $stateProvider.state('app.enfermeria', {
+            url: '/enfermeria',            
+            templateUrl: 'templates/enfermeria.html',
+            resolve:{
+              info:function(loading,consultas){
+                loading.inicio();
+                return consultas.conveniosinter(11);
+              }
+            },
+            controller:function($scope,info,loading){
+              loading.fin();
+              $scope.convenios = info.data;
+            }
+        });
+
 
 
   // if none of the above states are matched, use this as the fallback

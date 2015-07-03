@@ -1,32 +1,30 @@
 <ion-view view-title="Interapp">
 
     <ion-content>
-        <div class="hero" style="background-image: url('img/secciones/ModulosINTER.png');">
+        <div class="hero" style="background-image: url('img/secciones/Cristales.jpg');">
             <div class="content">
-                <h3><a class="light">Resultado</a></h3>
+                <h3><a class="light">Cristales</a></h3>
             </div>
         </div>
-        <div class="text-left margin-left">
-          <h2>Hospitales</h2>
-        </div>
+        
         <div class="list resultados">
 
-          <div ng-if="hospitales.length == 0" class="card padding">
+          <div ng-if="convenios.length == 0" class="card padding">
             No se encontraron resultados
           </div>
           
-          <div class="card padding" ng-repeat="hospital in hospitales">
+          <div class="card padding" ng-repeat="convenio in convenios">
             <a class="item item-icon-left" href="#">
               <i class="icon ion-person"></i>
-              {{hospital.name}}
+              {{convenio.proveedor}}
             </a>
             <a class="item item-icon-left" href="#">
               <i class="icon ion-ios-home-outline"></i>
-              {{hospital.direccion}}
+              {{convenio.direccion}}
             </a>
             <a class="item item-icon-left" href="#">
               <i class="icon ion-ios-telephone-outline"></i>
-              {{hospital.telefono}}
+              {{convenio.telefono}}
             </a>
           </div>
 
