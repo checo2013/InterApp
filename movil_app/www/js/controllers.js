@@ -85,11 +85,6 @@ angular.module('starter.controllers', ['app.services'])
 
     }
 
-    $scope.llamar = function () {
-        var call = "tel:01-800-911-9999";
-        document.location.href = call;
-    }
-
 })
 
 .controller('GastosCtrl', function($scope,$ionicSideMenuDelegate) {
@@ -98,6 +93,7 @@ angular.module('starter.controllers', ['app.services'])
       var call = "tel:01-800-911-9999";
       document.location.href = call;
   }
+
 })
 
 .controller('BusquedaInterHospitalesCtrl', function($scope,$state, info) {

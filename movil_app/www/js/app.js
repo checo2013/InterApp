@@ -80,6 +80,15 @@ angular.module('starter', [
 
   })
 
+  $rootScope.llamar = function (telefono) {
+
+      var numeros = telefono.split(' ');
+
+      var call = "tel:" + numeros[0] + '-' + numeros[1] + '-' + numeros[2] + '-' + numeros[3];
+      
+      document.location.href = call;
+  }
+
 
 })
 
