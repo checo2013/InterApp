@@ -31,7 +31,7 @@
                     <div class="input-label">
                           Estado
                     </div>
-                    <select ng-options="estado.id as estado.name for estado in estados" ng-model="datos.estado">
+                    <select ng-options="estado.id as estado.name for estado in estados" ng-model="datos.estado" ng-change="CiudadEstado(datos.estado)">
                         <option value="">Selecciona</option>
                     </select>
                 </label>

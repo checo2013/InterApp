@@ -227,8 +227,8 @@ function verificaPermisos(storage,$q,$state){
 
 function consultas($http,url){
     return{
-        ciudades:function(){
-            return $http.get(url + 'movil/ciudades');
+        ciudades:function(estado){
+            return $http.get(url + 'movil/ciudades/' + estado);
         },
         estados:function(){
             return $http.get(url + 'movil/estados');

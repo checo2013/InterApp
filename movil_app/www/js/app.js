@@ -83,7 +83,7 @@ angular.module('starter', [
   $rootScope.llamar = function (telefono) {
 
       var numeros = telefono.split(' ');
-
+      
       var call = "tel:" + numeros[0] + '-' + numeros[1] + '-' + numeros[2] + '-' + numeros[3];
       
       document.location.href = call;
@@ -223,10 +223,10 @@ angular.module('starter', [
 
                 var promesa      = $q.defer(),
                     especialidades = consultas.especialidades(),
-                    estados       = consultas.estados(),
-                    ciudades     = consultas.ciudades();
+                    estados       = consultas.estados();
+                    // ciudades     = consultas.ciudades();
 
-                $q.all([especialidades,estados,ciudades]).then(function (data){
+                $q.all([especialidades,estados]).then(function (data){
                   loading.fin();
                   promesa.resolve(data);
                 });
@@ -263,10 +263,10 @@ angular.module('starter', [
                 loading.inicio();
 
                 var promesa      = $q.defer(),                    
-                    estados       = consultas.estados(),
-                    ciudades     = consultas.ciudades();
+                    estados       = consultas.estados();
+                    // ciudades     = consultas.ciudades();
 
-                $q.all([estados,ciudades]).then(function (data){
+                $q.all([estados]).then(function (data){
                   loading.fin();
                   promesa.resolve(data);
                 });
@@ -312,10 +312,10 @@ angular.module('starter', [
                 loading.inicio();
 
                 var promesa      = $q.defer(),                    
-                    estados       = consultas.estados(),
-                    ciudades     = consultas.ciudades();
+                    estados       = consultas.estados();
+                    // ciudades     = consultas.ciudades();
 
-                $q.all([estados,ciudades]).then(function (data){
+                $q.all([estados]).then(function (data){
                   loading.fin();
                   promesa.resolve(data);
                 });
@@ -412,10 +412,10 @@ angular.module('starter', [
                   loading.inicio();
 
                   var promesa      = $q.defer(),                    
-                      estados       = consultas.estados(),
-                      ciudades     = consultas.ciudades();
+                      estados       = consultas.estados();
+                      // ciudades     = consultas.ciudades();
 
-                  $q.all([estados,ciudades]).then(function (data){
+                  $q.all([estados]).then(function (data){
                     loading.fin();
                     promesa.resolve(data);
                   });

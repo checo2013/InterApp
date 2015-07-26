@@ -96,14 +96,20 @@ angular.module('starter.controllers', ['app.services'])
 
 })
 
-.controller('BusquedaInterHospitalesCtrl', function($scope,$state, info) {
+.controller('BusquedaInterHospitalesCtrl', function($scope,$state, info, consultas) {
 
   $scope.estados = info[0].data;
-  $scope.ciudades = info[1].data;
+  // $scope.ciudades = info[1].data;
 
   $scope.datos = {
     estado:'',
     ciudad:''
+  }
+
+  $scope.CiudadEstado = function(estado){
+    consultas.ciudades(estado).success(function (data){
+      $scope.ciudades = data;
+    });
   }
 
   $scope.buscar = function() {
@@ -115,16 +121,22 @@ angular.module('starter.controllers', ['app.services'])
 })
 
 
-.controller('BusquedaDirectorioCtrl', function($scope,$state,$timeout,loading, info) {
+.controller('BusquedaDirectorioCtrl', function($scope,$state,$timeout,loading, info,consultas) {
 
   $scope.especialidades = info[0].data;
   $scope.estados = info[1].data;
-  $scope.ciudades = info[2].data;
+  // $scope.ciudades = info[2].data;
 
   $scope.datos = {
     estado:'',
     ciudad:'',
     especialidad:''
+  }
+
+  $scope.CiudadEstado = function(estado){
+    consultas.ciudades(estado).success(function (data){
+      $scope.ciudades = data;
+    });
   }
 
   $scope.buscar = function() {
@@ -142,14 +154,20 @@ angular.module('starter.controllers', ['app.services'])
 })
 
 
-.controller('BusquedaHospitalesCtrl', function($scope,$state, info) {
+.controller('BusquedaHospitalesCtrl', function($scope,$state, info,consultas) {
 
   $scope.estados = info[0].data;
-  $scope.ciudades = info[1].data;
+  // $scope.ciudades = info[1].data;
 
   $scope.datos = {
     estado:'',
     ciudad:''
+  }
+
+  $scope.CiudadEstado = function(estado){
+    consultas.ciudades(estado).success(function (data){
+      $scope.ciudades = data;
+    });
   }
 
   $scope.buscar = function() {
@@ -161,14 +179,20 @@ angular.module('starter.controllers', ['app.services'])
 })
 
 
-.controller('BusquedaCristalesCtrl', function($scope,$state, info) {
+.controller('BusquedaCristalesCtrl', function($scope,$state, info,consultas) {
 
   $scope.estados = info[0].data;
-  $scope.ciudades = info[1].data;
+  // $scope.ciudades = info[1].data;
 
   $scope.datos = {
     estado:'',
     ciudad:''
+  }
+
+  $scope.CiudadEstado = function(estado){
+    consultas.ciudades(estado).success(function (data){
+      $scope.ciudades = data;
+    });
   }
 
   $scope.buscar = function() {
