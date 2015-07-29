@@ -27,6 +27,7 @@ angular.module('starter', [
     // The GCM project ID (project number) from your Google Developer Console (un-comment if used)
     // gcm_id: 'GCM_ID'
   });
+
 }])
 
 .run(function($rootScope, $ionicDeploy, $ionicPlatform, $cordovaStatusbar, $ionicSideMenuDelegate, $state,storage,sesion) {
@@ -83,8 +84,13 @@ angular.module('starter', [
   $rootScope.llamar = function (telefono) {
 
       var numeros = telefono.split(' ');
-      
-      var call = "tel:" + numeros[0] + '-' + numeros[1] + '-' + numeros[2] + '-' + numeros[3];
+      var numero1 = numeros[0] ? numeros[0] : '';
+      var numero2 = numeros[1] ? '-' + numeros[1] : '';
+      var numero3 = numeros[2] ? '-' + numeros[2] : '';
+      var numero4 = numeros[3] ? '-' + numeros[3] : '';
+      var numero5 = numeros[4] ? '-' + numeros[4] : '';
+
+      var call = "tel:" + numero1 + numero2+ numero3+ numero4+ numero5;
       
       document.location.href = call;
   }
@@ -203,7 +209,24 @@ angular.module('starter', [
       templateUrl: 'templates/novida.html'
   });
 
+  // interInforma
+  $stateProvider.state('app.interInforma', {
+      url: '/interInforma',        
+      templateUrl: 'templates/interInforma.html'
+      
+  });
 
+    $stateProvider.state('app.casahabitacion', {
+        url: '/casahabitacion',        
+        templateUrl: 'templates/casahabitacion.html'
+        
+    });
+
+    $stateProvider.state('app.procedimientoatencion', {
+        url: '/procedimientoatencion',        
+        templateUrl: 'templates/procedimientoatencion.html'
+        
+    });
   // menu red medica aun sin desarrollo y se queda manual
     $stateProvider.state('app.redmedica', {
         url: '/redmedica',        
@@ -532,6 +555,22 @@ angular.module('starter', [
               info:function(loading,consultas){
                 loading.inicio();
                 return consultas.conveniosinter(11);
+              }
+            },
+            controller:function($scope,info,loading){
+              loading.fin();
+              $scope.convenios = info.data;
+            }
+        });
+
+        // menu servicios enfermeria
+        $stateProvider.state('app.oftalmologico', {
+            url: '/oftalmologico',            
+            templateUrl: 'templates/oftalmologico.html',
+            resolve:{
+              info:function(loading,consultas){
+                loading.inicio();
+                return consultas.conveniosinter(4);
               }
             },
             controller:function($scope,info,loading){

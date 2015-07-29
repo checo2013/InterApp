@@ -6,6 +6,9 @@ angular.module('starter.controllers', ['app.services'])
     // inicializa los datos del formulario
     // eag10@live.com.mx
     // 60003734
+
+    // cvalle@vitro.com
+    // 60000802
     $scope.datos = {
       email:'',
       password:'',
