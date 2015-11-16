@@ -21,13 +21,16 @@
         <ion-side-menu side="right">
             <ion-header-bar class="azul expanded">
                 <span class="avatar" style="background-image: url('img/user.png'); background-size: cover;    background-color: white !important;"></span>
-                <h2>Usuario</h2>
+                <h2 class="usuario">{{ nombre }}</h2>
             </ion-header-bar>
             
             <ion-content class="light-bg has-expanded-header">
                 <ion-list>
                     <ion-item nav-clear menu-close ui-sref="app.menu({id:1})">
                         Inicio
+                    </ion-item>
+                    <ion-item nav-clear menu-close ui-sref="app.perfil({id: {{id}} })">
+                        Editar Info.
                     </ion-item>
                     <ion-item nav-clear menu-close ng-click="logout()">
                         Cerrar Sesion

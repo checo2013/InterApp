@@ -12,6 +12,7 @@ function sesion($rootScope, $http, $q, url, $ionicLoading, $ionicPopup, $state, 
                 if (credenciales.recordar) {
                     storage.set('username',data.completo);
                     storage.set('nombre',data.nombre + ' ' + data.paterno);
+                    storage.set('id',data.id);
                 };
 
                 storage.set('user',data.id);
@@ -42,6 +43,7 @@ function sesion($rootScope, $http, $q, url, $ionicLoading, $ionicPopup, $state, 
 
                 });
 
+                $rootScope.id = data.id;
                 $rootScope.completo = data.completo;
                 $rootScope.nombre = data.nombre + ' ' + data.paterno;
 
@@ -250,6 +252,9 @@ function consultas($http,url){
         },
         conveniosinterEstado:function(tipo,estado,ciudad){
             return $http.get(url + 'movil/conveniosinter/' + tipo + '/' + estado + '/' + ciudad);
+        },
+        usuario:function(id){
+            return $http.get(url + 'movil/usuario/' + id);
         }
     }
 }
@@ -264,8 +269,8 @@ verificaPermisos.$inject = ['storage','$q','$state'];
 consultas.$inject = ['$http', 'url'];
 
 angular.module('app.services', ['ngResource'])
-.constant('url', 'http://iterapp.daseda.net/api/')
-// .constant('url', 'http://localhost/interapp/public/api/')
+// .constant('url', 'http://iterapp.daseda.net/api/')
+.constant('url', 'http://localhost/interapp/public/api/')
 .factory("sesion",sesion)
 .factory("loading",loading)
 .factory("mensajes",mensajes)

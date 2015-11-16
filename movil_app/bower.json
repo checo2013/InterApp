@@ -8,6 +8,7 @@
     "ionic-material": "~0.4.2",
     "angular-resource": "~1.4.0",
     "robotodraft": "~1.1.0",
-    "angular-sanitize": "~1.4.0"
+    "angular-sanitize": "~1.4.0",
+    "angular-messages": "~1.4.7"
   }
 }

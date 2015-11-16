@@ -12,7 +12,7 @@
         </div>
         <div class="card">
           <div class="item item-text-wrap text-center busqueda"> 
-            <form ng-submit="buscar()">
+            <form name="hospitalInterForm" ng-submit="buscar()" novalidate>
               <fieldset>
                 <legend>Directorio de Hospitales</legend>
                 <br>
@@ -20,7 +20,7 @@
                     <div class="input-label">
                           Estado
                     </div>
-                    <select ng-options="estado.id as estado.name for estado in estados" ng-model="datos.estado" ng-change="CiudadEstado(datos.estado)">
+                    <select ng-options="estado.id as estado.name for estado in estados" ng-model="datos.estado" ng-change="CiudadEstado(datos.estado)" required>
                         <option value="">Selecciona</option>
                     </select>
                 </label>
@@ -29,7 +29,7 @@
                     <div class="input-label">
                           Ciudad o Delegación
                     </div>
-                    <select ng-options="ciudad.id as ciudad.name for ciudad in ciudades | filter:{estado_id:datos.estado}" ng-model="datos.ciudad">
+                    <select ng-options="ciudad.id as ciudad.name for ciudad in ciudades | filter:{estado_id:datos.estado}" ng-model="datos.ciudad" required>
                         <option value="">Selecciona</option>
                     </select>
                 </label>

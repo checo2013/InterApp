@@ -27,6 +27,11 @@ body{
 	background-color: #3F51B5 !important;
 }
 
+.usuario{
+	font-size: 18px;
+	font-weight: 400;
+}
+
 .contenido ul{
 	list-style: circle;
 	margin-left: 1em;
@@ -132,6 +137,10 @@ body{
 	background-color: rgba(65, 65, 65, 0.63);
 }
 
+.hero>.content.profile{
+	background-color: transparent;
+}
+
 .margin-left{
 	margin-left: 10px;
 }
@@ -183,6 +192,10 @@ body{
 
 #video{
 	width: 100%;
+}
+
+.bg-white{
+	background-color: white !important;
 }
 
 

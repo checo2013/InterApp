@@ -12,6 +12,10 @@
             {{ item.numero }}
           </div>
           <div class="item item-text-wrap text-item"> 
+            Aseguradora <br> 
+            {{ item.name }}
+          </div>
+          <div class="item item-text-wrap text-item"> 
             Vigente hasta el: <br>
             {{ item.vencimiento |date:'dd/MM/yyyy'}}
           </div>

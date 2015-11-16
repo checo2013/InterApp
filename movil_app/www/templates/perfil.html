@@ -1,0 +1,51 @@
+<ion-view view-title="Mi Perfil">
+    <ion-content>
+        <div class="hero" style="background-color:rgba(65, 65, 65, 0.63);">
+            <div class="content profile">
+                <div class="avatar bg-white" style="background-image: url('img/user.png');"></div>
+                <h3><a class="light">{{ nombre }}</a></h3>
+                <!-- <h4>{{ nombre }}</h4> -->
+            </div>
+        </div>
+        <div class="card">
+            
+            <label class="item item-input item-floating-label"> 
+                <span class="input-label">Nombre(s)</span> 
+                <input type="text" ng-model="datos.nombre" placeholder="Nombre(s)"> 
+            </label>
+            <label class="item item-input item-floating-label"> 
+                <span class="input-label">Apellido Paterno</span> 
+                <input type="text" ng-model="datos.apellidoP" placeholder="Apellido Paterno"> 
+            </label>
+            <label class="item item-input item-floating-label"> 
+                <span class="input-label">Apellido Materno</span> 
+                <input type="text" ng-model="datos.apellidoM" placeholder="Apellido Materno"> 
+            </label>
+            <label class="item item-input item-floating-label"> 
+                <span class="input-label">Correo</span> 
+                <input type="email" ng-model="datos.email" placeholder="Correo"> 
+            </label> 
+            <div class="padding-leftright" ng-hide="edita">
+                <button type="button" class="button button-raised button-full button-stable ink" ng-click="edita = !edita">Cambiar Contraseña</button>
+            </div>
+            <div ng-show="edita">
+                <label class="item item-input item-floating-label"> 
+                    <span class="input-label">Contraseña</span> 
+                    <input type="password" ng-model="datos.password" placeholder="Contraseña"> 
+                </label>
+                <label class="item item-input item-floating-label"> 
+                    <span class="input-label">Confirmar Contraseña</span> 
+                    <input type="password" ng-model="datos.password2" placeholder="Contraseña"> 
+                </label> 
+                <div ng-if="datos.password != datos.password2">La clave no coincide.</div>
+            </div>
+
+            <br>
+
+            <div class="padding-leftright">
+                <button type="button" class="button button-raised button-full button-assertive ink">Guardar Cambios</button>
+            </div>
+
+        </div>
+    </ion-content>
+</ion-view>

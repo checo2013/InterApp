@@ -30,7 +30,7 @@ angular.module('starter', [
 
 }])
 
-.run(function($rootScope, $ionicDeploy, $ionicPlatform, $cordovaStatusbar, $ionicSideMenuDelegate, $state,storage,sesion) {
+.run(function($rootScope, $ionicDeploy, $ionicPlatform, $cordovaStatusbar, $ionicSideMenuDelegate, $state,storage,sesion, $location) {
 
   $ionicPlatform.ready(function() {
 
@@ -38,9 +38,11 @@ angular.module('starter', [
 
     $rootScope.username = username;
     $rootScope.nombre = storage.get('nombre','');
+    $rootScope.id = storage.get('id',$rootScope.id);
 
     if (username !== false) {
-      $state.go('app.home');
+
+      $state.go('app.menu',{id:1});
     };
     
     // Hide the accessory bar by default
@@ -75,11 +77,20 @@ angular.module('starter', [
     $ionicSideMenuDelegate.toggleLeft();
   };
 
-  $rootScope.$on('$stateChangeStart', function(event, toState){ 
+  // $rootScope.$on('$locationChangeStart', function(event, newRoute, oldRoute) {
+    
+  //   var username = storage.get('username',false);
 
-      // console.log(toState);
+  //   console.log(username);
+  //   // $rootScope.authktd = isLoggedIn;
+  //   // if (newRoute.indexOf('/login') >= 0) {
 
-  })
+  //   //   if (isLoggedIn){
+
+  //   //     $location.path('/menu/1');
+  //   //   }
+  //   // }
+  // });
 
   $rootScope.llamar = function (telefono) {
 
@@ -121,6 +132,20 @@ angular.module('starter', [
       url: '/app',
       abstract: true,
       templateUrl: 'templates/app.html'
+  });
+
+  $stateProvider.state('app.perfil', {
+      url: '/perfil/:id',
+      templateUrl: 'templates/perfil.html',
+      resolve: {
+
+          // para cargar datos antes de cargar el controller
+          datos: function(consultas,$stateParams,loading){
+              loading.inicio();
+              return consultas.usuario($stateParams.id);
+          }
+      },
+      controller: 'perfilCtrl'
   });
 
   $stateProvider.state('app.menu', {
