@@ -6,9 +6,9 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', [
-  'ionic',
+  'ionic','ionic.service.core',
   'ngCordova',
-  'ionic.service.core',
+  
   'ionic.service.push',
   'ionic.service.deploy',
   'ionic-material',
@@ -17,7 +17,7 @@ angular.module('starter', [
   'ngSanitize'
 ])
 
-.config(['$ionicAppProvider', function($ionicAppProvider) {
+.config(['$ionicAppProvider', function($ionicAppProvider,$compileProvider) {
   // Identify app
   $ionicAppProvider.identify({
     // The App ID (from apps.ionic.io) for the server
@@ -28,6 +28,9 @@ angular.module('starter', [
     // gcm_id: 'GCM_ID'
   });
 
+
+  // $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|geo|mailto|tel|chrome-extension):/);
+  
 }])
 
 .run(function($rootScope, $ionicDeploy, $ionicPlatform, $cordovaStatusbar, $ionicSideMenuDelegate, $state,storage,sesion, $location) {
