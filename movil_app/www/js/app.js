@@ -8,7 +8,6 @@
 angular.module('starter', [
   'ionic','ionic.service.core',
   'ngCordova',
-  
   'ionic.service.push',
   'ionic.service.deploy',
   'ionic-material',
@@ -33,7 +32,7 @@ angular.module('starter', [
   
 }])
 
-.run(function($rootScope, $ionicDeploy, $ionicPlatform, $cordovaStatusbar, $ionicSideMenuDelegate, $state,storage,sesion, $location) {
+.run(function($rootScope, $ionicDeploy, $ionicPlatform, $cordovaStatusbar, $ionicSideMenuDelegate, $state,storage,sesion, $location, loading) {
 
   $ionicPlatform.ready(function() {
 
@@ -80,20 +79,13 @@ angular.module('starter', [
     $ionicSideMenuDelegate.toggleLeft();
   };
 
-  // $rootScope.$on('$locationChangeStart', function(event, newRoute, oldRoute) {
-    
-  //   var username = storage.get('username',false);
+  $rootScope.$on('$stateChangeStart', function (event,next, nextParams, fromState) {
+      loading.inicio();
+  });
 
-  //   console.log(username);
-  //   // $rootScope.authktd = isLoggedIn;
-  //   // if (newRoute.indexOf('/login') >= 0) {
-
-  //   //   if (isLoggedIn){
-
-  //   //     $location.path('/menu/1');
-  //   //   }
-  //   // }
-  // });
+  $rootScope.$on('$stateChangeSuccess', function (event,next, nextParams, fromState) {
+      loading.fin();
+  });
 
   $rootScope.llamar = function (telefono) {
 
