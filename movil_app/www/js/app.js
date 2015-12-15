@@ -6,9 +6,8 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', [
-  'ionic',
+  'ionic','ionic.service.core',
   'ngCordova',
-  'ionic.service.core',
   'ionic.service.push',
   'ionic.service.deploy',
   'ionic-material',
@@ -17,7 +16,7 @@ angular.module('starter', [
   'ngSanitize'
 ])
 
-.config(['$ionicAppProvider', function($ionicAppProvider) {
+.config(['$ionicAppProvider', function($ionicAppProvider,$compileProvider) {
   // Identify app
   $ionicAppProvider.identify({
     // The App ID (from apps.ionic.io) for the server
@@ -28,9 +27,12 @@ angular.module('starter', [
     // gcm_id: 'GCM_ID'
   });
 
+
+  // $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|geo|mailto|tel|chrome-extension):/);
+  
 }])
 
-.run(function($rootScope, $ionicDeploy, $ionicPlatform, $cordovaStatusbar, $ionicSideMenuDelegate, $state,storage,sesion, $location) {
+.run(function($rootScope, $ionicDeploy, $ionicPlatform, $cordovaStatusbar, $ionicSideMenuDelegate, $state,storage,sesion, $location, loading) {
 
   $ionicPlatform.ready(function() {
 
@@ -77,20 +79,13 @@ angular.module('starter', [
     $ionicSideMenuDelegate.toggleLeft();
   };
 
-  // $rootScope.$on('$locationChangeStart', function(event, newRoute, oldRoute) {
-    
-  //   var username = storage.get('username',false);
+  $rootScope.$on('$stateChangeStart', function (event,next, nextParams, fromState) {
+      loading.inicio();
+  });
 
-  //   console.log(username);
-  //   // $rootScope.authktd = isLoggedIn;
-  //   // if (newRoute.indexOf('/login') >= 0) {
-
-  //   //   if (isLoggedIn){
-
-  //   //     $location.path('/menu/1');
-  //   //   }
-  //   // }
-  // });
+  $rootScope.$on('$stateChangeSuccess', function (event,next, nextParams, fromState) {
+      loading.fin();
+  });
 
   $rootScope.llamar = function (telefono) {
 
