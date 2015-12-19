@@ -35,7 +35,7 @@
                     <div class="input-label">
                           Ciudad o Delegación
                     </div>
-                    <select ng-options="ciudad.id as ciudad.name for ciudad in ciudades | filter:{estado_id:datos.estado}" ng-model="datos.ciudad">
+                    <select ng-options="ciudad.id as ciudad.name for ciudad in ciudades | filter:{estado_id:datos.estado}" ng-change="EspecialidadesCiudadEstado(datos.estado,datos.ciudad)" ng-model="datos.ciudad">
                         <option value="">Selecciona</option>
                     </select>
                 </label>

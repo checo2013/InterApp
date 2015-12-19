@@ -144,6 +144,12 @@ angular.module('starter.controllers', ['app.services'])
     });
   }
 
+  $scope.EspecialidadesCiudadEstado = function(estado,ciudad){
+    consultas.especialidadesDisponibles(estado,ciudad).success(function (data){
+      $scope.especialidades = data;
+    });
+  }
+
   $scope.buscar = function() {
     
     if ($scope.datos.estado == '' || $scope.datos.ciudad == '' || $scope.datos.especialidad == '') {

@@ -238,6 +238,9 @@ function consultas($http,url){
         especialidades:function(){
             return $http.get(url + 'movil/especialidades');
         },
+        especialidadesDisponibles : function(estado,ciudad){
+            return $http.get(url + 'movil/especialidades/' + estado + '/' + ciudad);
+        },
         medicos:function(estado,ciudad,especialidad){
             return $http.get(url + 'movil/medicos/' + estado + '/' + ciudad + '/' + especialidad);
         },
